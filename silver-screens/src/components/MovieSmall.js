@@ -10,7 +10,7 @@ export default class MovieSmall extends Component {
     }
 
     render(){
-        console.log(this.props)
+        // console.log(this.props)
         const { movie } = this.props
         return(
             <MovieSmallDiv> 
