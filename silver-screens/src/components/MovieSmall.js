@@ -1,6 +1,8 @@
 import React , { Component } from 'react'
 import styled from 'styled-components'
 
+//should probably be movie preview 
+//then include move details when clicked
 export default class MovieSmall extends Component {
     constructor(props){
         super(props)

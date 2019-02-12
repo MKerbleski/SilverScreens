@@ -37,7 +37,7 @@ export const fetchList = (catagory, pageNum=1) => {
                 dispatch({type: ERROR, payload: "unknown catagory"});
                 break;
         }
-        axios.get(`https://api.themoviedb.org/3/movie/${catagory}?api_key=eb78932ad7ebfc9390234541280b7c84&language=en-US&page=${pageNum}`).then(res => {
+        axios.get(`https://api.themoviedb.org/3/movie/${catagory}?api_key=${process.env.REACT_APP_MOVIE_DB_KEY}&language=en-US&page=${pageNum}`).then(res => {
             dispatch({type: LIST_RECIEVED, payload: res})
         }).catch(error => {
             console.log(error)
