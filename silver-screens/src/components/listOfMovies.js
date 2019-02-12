@@ -1,5 +1,6 @@
 import React , { Component } from 'react'
 import styled from 'styled-components'
+import NowPlaying from './NowPlaying'
 
 export default class ListOfMovies extends Component {
     constructor(props){
@@ -13,6 +14,7 @@ export default class ListOfMovies extends Component {
         return(
             <ListOfMoviesDiv> 
                 lisst of movies
+                <NowPlaying />
             </ListOfMoviesDiv>
         )
     }
