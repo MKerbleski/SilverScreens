@@ -35,7 +35,8 @@ export const reducer = (state=initialState, action) => {
             return Object.assign({}, state, {
                 listRequested: false,
                 movieList: action.payload.data,
-                pageNum: action.payload.data.page
+                pageNum: action.payload.data.page,
+                totalPages: action.payload.data.total_pages
             })
         case ERROR: 
             return Object.assign({}, state, {
