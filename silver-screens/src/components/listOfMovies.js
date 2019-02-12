@@ -5,25 +5,15 @@ import MovieSmall from './MovieSmall'
 import { connect } from 'react-redux';
 import { 
     changeCatagory, 
-    fetchNowPlaying
+    fetchList,
 } from '../actions'
 
 const sortCatagories = ['Now Playing', 'Popular', 'Top Rated']
 
 class ListOfMovies extends Component {
-
-    fetchList(cat){
-        switch(cat){
-            case 'Now Playing':
-                this.props.fetchNowPlaying()
-                break;
-            default: 
-                break;
-        }
-    }
     
     componentDidMount(){
-        this.fetchList(this.props.store.catagory)
+        this.props.fetchList(this.props.store.catagory)
     }
 
     render(){
@@ -52,7 +42,7 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = {
     changeCatagory,
-    fetchNowPlaying,
+    fetchList,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListOfMovies)

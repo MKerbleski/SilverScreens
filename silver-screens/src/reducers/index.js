@@ -3,6 +3,7 @@ import {
     CHANGE_PAGE,
     LIST_RECIEVED,
     CHANGE_CATAGORY,
+    LIST_REQUESTED
 } from '../actions';
 
 const initialState =  {
@@ -13,22 +14,28 @@ const initialState =  {
 export const reducer = (state=initialState, action) => {
     switch(action.type) {
         case CHANGE_PAGE: 
-            if(action.pageNum >= 0){
+            if(action.pageNum >= 1){
                 return Object.assign({}, state, {
                     pageNum: action.pageNum
                 })
             } else {
                 return Object.assign({}, state, {
-                    pageNum: 0
+                    pageNum: 1
                 })
             }
+        case LIST_REQUESTED: 
+            return Object.assign({}, state, {
+                listRequested: true
+            })
         case CHANGE_CATAGORY: 
             return Object.assign({}, state, {
                 catagory: action.catagory
             })
         case LIST_RECIEVED: 
             return Object.assign({}, state, {
-                movieList: action.payload.data
+                listRequested: false,
+                movieList: action.payload.data,
+                pageNum: action.payload.data.page
             })
         case ERROR: 
             return Object.assign({}, state, {
