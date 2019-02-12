@@ -4,15 +4,7 @@ import { connect } from 'react-redux';
 import { changePage } from '../actions'
 
 class Nav extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-
-        }
-    }
-
     render(){
-        // console.log(this.props)
         return(
             <NavDiv> 
                 <button onClick={() => this.props.changePage(this.props.store.pageNum-1)}>Prev</button>

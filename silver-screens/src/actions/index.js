@@ -3,11 +3,18 @@ import axios from 'axios'
 export const ERROR = 'ERROR';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
 export const LIST_RECIEVED = 'LIST_RECIEVED';
+export const CHANGE_CATAGORY = 'CHANGE_CATAGORY';
 
 export const changePage = (pageNum) => {
     return function(dispatch){
         dispatch({type: CHANGE_PAGE, pageNum: pageNum});
         dispatch(fetchNowPlaying(pageNum))
+    }
+}
+
+export const changeCatagory = (catagory) => {
+    return function(dispatch){
+        dispatch({type: CHANGE_CATAGORY, catagory: catagory});
     }
 }
 
