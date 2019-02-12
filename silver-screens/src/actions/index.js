@@ -16,7 +16,7 @@ export const changePage = (catagory, pageNum=1) => {
 export const changeCatagory = (catagory) => {
     return function(dispatch){
         dispatch({type: CHANGE_CATAGORY, catagory: catagory});
-        dispatch(fetchList(catagory))
+        dispatch(fetchList(catagory, 1))
     }
 }
 
@@ -25,21 +25,19 @@ export const fetchList = (catagory, pageNum=1) => {
         dispatch({type: LIST_REQUESTED})
         switch(catagory){
             case 'Now Playing':
-                dispatch(fetchNowPlaying(pageNum));
+                catagory = 'now_playing'
                 break;
             case 'Popular':
-                dispatch(fetchPopular(pageNum));
+                catagory = 'popular'
+                break;
+            case 'Top Rated':
+                catagory = 'top_rated'
                 break;
             default:
-                dispatch(fetchNowPlaying(pageNum));
+                dispatch({type: ERROR, payload: "unknown catagory"});
                 break;
         }
-    }
-}
-
-export const fetchNowPlaying = (pageNum=1) => {
-    return function(dispatch){
-        axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=eb78932ad7ebfc9390234541280b7c84&language=en-US&page=${pageNum}`).then(res => {
+        axios.get(`https://api.themoviedb.org/3/movie/${catagory}?api_key=eb78932ad7ebfc9390234541280b7c84&language=en-US&page=${pageNum}`).then(res => {
             dispatch({type: LIST_RECIEVED, payload: res})
         }).catch(error => {
             console.log(error)
@@ -47,16 +45,3 @@ export const fetchNowPlaying = (pageNum=1) => {
         })
     }
 }
-
-export const fetchPopular = (pageNum=1) => {
-    return function(dispatch){
-        axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=eb78932ad7ebfc9390234541280b7c84&language=en-US&page=${pageNum}`).then(res => {
-            dispatch({type: LIST_RECIEVED, payload: res})
-        }).catch(error => {
-            console.log(error)
-            dispatch({type: ERROR, payload: error})
-        })
-    }
-}
-
-

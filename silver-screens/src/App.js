@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div className="App">
           <h1>Silver Screens</h1>
-          <ListOfMovies></ListOfMovies>
+          <ListOfMovies />
       </div>
     );
   }

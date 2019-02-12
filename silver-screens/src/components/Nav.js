@@ -5,7 +5,7 @@ import { changePage } from '../actions'
 
 class Nav extends Component {
     render(){
-        const {pageNum, catagory} = this.props.store
+        const { pageNum, catagory } = this.props.store
         return(
             <NavDiv> 
                 {pageNum === 1 ? null : <button onClick={() => {

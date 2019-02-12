@@ -13,7 +13,7 @@ const sortCatagories = ['Now Playing', 'Popular', 'Top Rated']
 class ListOfMovies extends Component {
     
     componentDidMount(){
-        this.props.fetchList(this.props.store.catagory)
+        this.props.fetchList(sortCatagories[0])
     }
 
     render(){
@@ -49,9 +49,4 @@ export default connect(mapStateToProps, mapDispatchToProps)(ListOfMovies)
 
 const ListOfMoviesDiv = styled.div`
     border: 1px solid red;
-    button{
-        :active{
-
-        }
-    }
 `
