@@ -1,6 +1,7 @@
 import React , { Component } from 'react'
 import styled from 'styled-components'
 import Nav from './Nav'
+import Search from './Search'
 import MovieSmall from './MovieSmall'
 import { connect } from 'react-redux';
 import { 
@@ -27,10 +28,14 @@ class ListOfMovies extends Component {
                         style={{background: this.props.store.catagory === catagory ? 'green' : 'blue'}}
                         onClick={() => this.props.changeCatagory(catagory)}>{catagory}</button>
                 })}
-                {this.props.store.movieList ? this.props.store.movieList.results.map(movie => {
-                    return <MovieSmall key={movie.id} movie={movie} />
-                }) : <h1>loading...</h1>}
                 <Nav />
+                <Search />
+                {this.props.store.movieList ? 
+                    this.props.store.movieList.results.map(movie => {
+                        return <MovieSmall key={movie.id} movie={movie} />
+                    }) : <h1>loading...</h1>}
+                {this.props.store.movieList && this.props.store.movieList.results.length === 0 ? 
+                    <h4>No Movies found</h4> : null} 
             </ListOfMoviesDiv>
         )
     }

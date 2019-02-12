@@ -20,7 +20,8 @@ export const changeCatagory = (catagory) => {
     }
 }
 
-export const fetchList = (catagory, pageNum=1) => {
+export const fetchList = (catagory, pageNum=1, searchInput=null) => {
+    console.log(searchInput)
     return function(dispatch){
         dispatch({type: LIST_REQUESTED})
         switch(catagory){
@@ -33,15 +34,36 @@ export const fetchList = (catagory, pageNum=1) => {
             case 'Top Rated':
                 catagory = 'top_rated'
                 break;
+            case 'search':
+                if(searchInput===''){
+                    catagory = 'now_playing'
+                } else {
+                    catagory = 'search'
+                    searchInput = `&include_adult=false&query=${searchInput}`
+                }
+                break;
             default:
                 dispatch({type: ERROR, payload: "unknown catagory"});
                 break;
         }
-        axios.get(`https://api.themoviedb.org/3/movie/${catagory}?api_key=${process.env.REACT_APP_MOVIE_DB_KEY}&language=en-US&page=${pageNum}`).then(res => {
+        let url = `https://api.themoviedb.org/3/movie/${catagory}?api_key=${process.env.REACT_APP_MOVIE_DB_KEY}&language=en-US&page=${pageNum}`
+
+        if (catagory === 'search'){
+            url = `https://api.themoviedb.org/3/search/movie/?api_key=${process.env.REACT_APP_MOVIE_DB_KEY}&language=en-US&page=${pageNum}${searchInput}`
+        }
+        console.log(url)
+        axios.get(url).then(res => {
             dispatch({type: LIST_RECIEVED, payload: res})
         }).catch(error => {
             console.log(error)
             dispatch({type: ERROR, payload: error})
         })
+    }
+}
+
+export const searchMovies = (searchInput, pageNum=1) => {
+    return function(dispatch){
+        dispatch({type: LIST_REQUESTED})
+        axios.get(`https://api.themoviedb.org/3/search/movie?${process.env.REACT_APP_MOVIE_DB_KEY}&language=en-US&page=${pageNum}&include_adult=false&query=${searchInput}`)
     }
 }
