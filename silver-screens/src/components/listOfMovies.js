@@ -31,10 +31,10 @@ class ListOfMovies extends Component {
                 <Nav />
                 <Search />
                 {this.props.store.movieList ? 
-                    this.props.store.movieList.results.map(movie => {
+                    this.props.store.movieList.map(movie => {
                         return <MovieSmall key={movie.id} movie={movie} />
                     }) : <h1>loading...</h1>}
-                {this.props.store.movieList && this.props.store.movieList.results.length === 0 ? 
+                {this.props.store.movieList && this.props.store.movieList.length === 0 ? 
                     <h4>No Movies found</h4> : null} 
             </ListOfMoviesDiv>
         )

@@ -32,11 +32,12 @@ export const reducer = (state=initialState, action) => {
                 catagory: action.catagory
             })
         case LIST_RECIEVED: 
+            // console.log(action.payload)
             return Object.assign({}, state, {
                 listRequested: false,
-                movieList: action.payload.data,
-                pageNum: action.payload.data.page,
-                totalPages: action.payload.data.total_pages
+                movieList: action.payload.results,
+                pageNum: action.payload.page,
+                totalPages: action.payload.total_pages
             })
         case ERROR: 
             return Object.assign({}, state, {
