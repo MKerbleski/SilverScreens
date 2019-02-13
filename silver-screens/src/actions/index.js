@@ -3,9 +3,10 @@ import axios from 'axios'
 export const ERROR = 'ERROR';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
 export const LIST_RECIEVED = 'LIST_RECIEVED';
-export const LIST_RECIEVED_2 = 'LIST_RECIEVED_2';
+export const SELECT_MOVIE = 'SELECT_MOVIE';
 export const CHANGE_CATAGORY = 'CHANGE_CATAGORY';
 export const LIST_REQUESTED = 'LIST_REQUESTED';
+export const MOVIE_DETAILS = 'MOVIE_DETAILS';
 
 export const changePage = (catagory, pageNum=1) => {
     return function(dispatch){
@@ -75,9 +76,20 @@ export const fetchList = (catagory, pageNum=1, searchInput=null) => {
     }
 }
 
-export const searchMovies = (searchInput, pageNum=1) => {
+export const selectMovie = (movieId) => {
     return function(dispatch){
-        dispatch({type: LIST_REQUESTED})
-        axios.get(`https://api.themoviedb.org/3/search/movie?${process.env.REACT_APP_MOVIE_DB_KEY}&language=en-US&page=${pageNum}&include_adult=false&query=${searchInput}`)
+        dispatch({type: SELECT_MOVIE, payload: movieId})
+    }
+}
+
+export const getMovieDetails = (movieId) => {
+    return function(dispatch){
+        axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_MOVIE_DB_KEY}&language=en-US`).then(res => {
+            dispatch({type: MOVIE_DETAILS, payload: res})
+            console.log(res)
+        }).catch(error => {
+            dispatch({type: ERROR, payload: error})
+            console.log(error)
+        })
     }
 }

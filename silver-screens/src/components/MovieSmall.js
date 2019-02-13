@@ -1,9 +1,13 @@
 import React , { Component } from 'react'
 import styled from 'styled-components'
-
+import { connect } from 'react-redux';
+import { 
+    selectMovie
+} from '../actions'
+import { Link } from 'react-router-dom';
 //should probably be movie preview 
 //then include move details when clicked
-export default class MovieSmall extends Component {
+class MovieSmall extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -11,20 +15,35 @@ export default class MovieSmall extends Component {
         }
     }
 
+    selector(movieId){
+        this.props.selectMovie(movieId)
+        
+    }
+
     render(){
         const { movie } = this.props
+        // if(this.props.store.selectedMovie === movie.id){
+        //     const selectedMovie = document.getElementById(`${this.props.store.selectedMovie}`)
+        //     console.log(selectedMovie)
+        //     selectedMovie.scrollIntoView({behavior: "smooth",  block: "start"})
+            // console.log(selectedMovie.scrollHeight)
+            // document.documentElement.scrollTop = selectedMovie.scrollHeight
+        // }
         return(
-            <MovieSmallDiv> 
-                {this.state.expand ? null : 
-                    <div className='preview' onClick={() => this.setState({expand: !this.state.expand})}>
+            <Link to={`${movie.id}`}>
+
+            <MovieSmallDiv id={movie.id}> 
+                {/* {this.props.store.selectedMovie === movie.id ? null :  */}
+                    <div className='preview' onClick={() => this.selector(movie.id)}>
                         <img 
                             src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} 
                             alt={`${movie.original_title} poster`}
                              />
                         <strong>{movie.original_title}</strong>
-                    </div>}
-                {this.state.expand ? 
-                    <div className="details" onClick={() => this.setState({expand: !this.state.expand})}>
+                    </div>
+                    {/* } */}
+                {/* {this.props.store.selectedMovie === movie.id ? 
+                    <div className="details" onClick={() => this.selector(null)}>
                         <div>
                             <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={`${movie.original_title} poster`} />   
                         </div>
@@ -38,11 +57,22 @@ export default class MovieSmall extends Component {
                             <p>Release Date: {movie.release_date}</p>
                             {movie.adult ? <p>ADULT</p>: null}
                         </div>
-                    </div> : null}
+                    </div> : null} */}
             </MovieSmallDiv>
+            </Link>
         )
     }
 }
+
+const mapStateToProps = store => {
+    return { store: store };
+}
+
+const mapDispatchToProps = {
+    selectMovie
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieSmall)
 
 const MovieSmallDiv = styled.div`
     /* border: 1px solid red; */
@@ -83,6 +113,7 @@ const MovieSmallDiv = styled.div`
             opacity: .8;
             font-size: 40px;
             max-width: 100%;
+            height: auto;
             -webkit-text-stroke: 1px black;
             @media (max-width: 500px) {
                 font-size: 10vw;

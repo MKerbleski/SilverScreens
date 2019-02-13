@@ -3,7 +3,9 @@ import {
     CHANGE_PAGE,
     LIST_RECIEVED,
     CHANGE_CATAGORY,
-    LIST_REQUESTED
+    LIST_REQUESTED,
+    SELECT_MOVIE,
+    MOVIE_DETAILS
 } from '../actions';
 
 const initialState =  {
@@ -16,6 +18,14 @@ export const reducer = (state=initialState, action) => {
         case CHANGE_PAGE: 
             return Object.assign({}, state, {
                 pageNum: action.pageNum
+            })
+        case MOVIE_DETAILS: 
+            return Object.assign({}, state, {
+                movieDetails: action.payload.data
+            })
+        case SELECT_MOVIE: 
+            return Object.assign({}, state, {
+                selectedMovie: action.payload
             })
         case LIST_REQUESTED: 
             return Object.assign({}, state, {
