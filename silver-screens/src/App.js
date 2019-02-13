@@ -16,9 +16,14 @@ class App extends Component {
 export default App;
 
 const AppDiv = styled.div`
-  border: 0.1px solid silver;
+  /* border: 0.1px solid red; */
+  max-width: 100%;
   box-sizing: border-box;
-  background: silver;
+  background: #711324;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   height: auto;
   margin: 0;
   padding: 0;

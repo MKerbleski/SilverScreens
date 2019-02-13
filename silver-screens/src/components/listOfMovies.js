@@ -28,7 +28,6 @@ class ListOfMovies extends Component {
                             style={{background: this.props.store.catagory === catagory ? 'green' : 'blue'}}
                             onClick={() => this.props.changeCatagory(catagory)}>{catagory}</button>
                     })}
-                <Nav />
                 <Search />
                 <div className="movies">
                 {this.props.store.movieList ? 
@@ -38,6 +37,7 @@ class ListOfMovies extends Component {
                 </div>
                 {this.props.store.movieList && this.props.store.movieList.length === 0 ? 
                     <h4>No Movies found</h4> : null} 
+                <Nav />
             </ListOfMoviesDiv>
         )
     }
@@ -60,11 +60,15 @@ const ListOfMoviesDiv = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    max-width: 100%;
+    overflow: hidden;
     .movies{
-        border: 1px solid green;
+        /* border: 1px solid green; */
         display: flex;
-        justify-content: center;
         flex-direction: row;
+        align-content: space-around;
+        justify-content: center;
         flex-wrap: wrap;
+        width: 100%;
     }
 `
