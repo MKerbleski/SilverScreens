@@ -22,7 +22,6 @@ export const changeCatagory = (catagory) => {
 }
 
 export const fetchList = (catagory, pageNum=1, searchInput=null) => {
-    console.log(searchInput)
     return function(dispatch){
         dispatch({type: LIST_REQUESTED})
         switch(catagory){
@@ -47,23 +46,9 @@ export const fetchList = (catagory, pageNum=1, searchInput=null) => {
                 dispatch({type: ERROR, payload: "unknown catagory"});
                 break;
         }
-        let url;
         if (catagory === 'search'){
-            // url = `https://api.themoviedb.org/3/search/movie/?api_key=${process.env.REACT_APP_MOVIE_DB_KEY}&language=en-US&page=${pageNum}${searchInput}`
-            // let config = {
-            //     headers: {
-            //         'withCredentials': false,
-            //     }
-            //   }
-            // axios.get(url, config).then(res => {
-            //     dispatch({type: LIST_RECIEVED, payload: res})
-            // }).catch(error => {
-            //     // console.log(error)
-            //     dispatch({type: ERROR, payload: error})
-            // })
-            
+            //This section of code was done to get around a CORS issue, still research why axios will not work in this situation
             var data = "{}";
-            
             var xhr = new XMLHttpRequest();
             xhr.withCredentials = false;
             
@@ -79,8 +64,7 @@ export const fetchList = (catagory, pageNum=1, searchInput=null) => {
             xhr.send(data);
 
         } else {
-            url = `https://api.themoviedb.org/3/movie/${catagory}?api_key=${process.env.REACT_APP_MOVIE_DB_KEY}&language=en-US&page=${pageNum}`
-            axios.get(url).then(res => {
+            axios.get(`https://api.themoviedb.org/3/movie/${catagory}?api_key=${process.env.REACT_APP_MOVIE_DB_KEY}&language=en-US&page=${pageNum}`).then(res => {
                 dispatch({type: LIST_RECIEVED, payload: res.data})
             }).catch(error => {
                 console.log(error)

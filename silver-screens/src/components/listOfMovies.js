@@ -21,19 +21,21 @@ class ListOfMovies extends Component {
         return(
             <ListOfMoviesDiv> 
                 <h1>list of movies</h1>
-                {sortCatagories.map(catagory => {
-                    return <button 
-                        key={catagory} 
-                        name={catagory} 
-                        style={{background: this.props.store.catagory === catagory ? 'green' : 'blue'}}
-                        onClick={() => this.props.changeCatagory(catagory)}>{catagory}</button>
-                })}
+                    {sortCatagories.map(catagory => {
+                        return <button 
+                            key={catagory} 
+                            name={catagory} 
+                            style={{background: this.props.store.catagory === catagory ? 'green' : 'blue'}}
+                            onClick={() => this.props.changeCatagory(catagory)}>{catagory}</button>
+                    })}
                 <Nav />
                 <Search />
+                <div className="movies">
                 {this.props.store.movieList ? 
                     this.props.store.movieList.map(movie => {
                         return <MovieSmall key={movie.id} movie={movie} />
                     }) : <h1>loading...</h1>}
+                </div>
                 {this.props.store.movieList && this.props.store.movieList.length === 0 ? 
                     <h4>No Movies found</h4> : null} 
             </ListOfMoviesDiv>
@@ -53,5 +55,16 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps, mapDispatchToProps)(ListOfMovies)
 
 const ListOfMoviesDiv = styled.div`
-    border: 1px solid red;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    .movies{
+        border: 1px solid green;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
 `

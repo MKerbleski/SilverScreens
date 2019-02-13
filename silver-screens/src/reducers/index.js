@@ -14,15 +14,9 @@ const initialState =  {
 export const reducer = (state=initialState, action) => {
     switch(action.type) {
         case CHANGE_PAGE: 
-            if(action.pageNum >= 1){
-                return Object.assign({}, state, {
-                    pageNum: action.pageNum
-                })
-            } else {
-                return Object.assign({}, state, {
-                    pageNum: 1
-                })
-            }
+            return Object.assign({}, state, {
+                pageNum: action.pageNum
+            })
         case LIST_REQUESTED: 
             return Object.assign({}, state, {
                 listRequested: true
@@ -32,7 +26,6 @@ export const reducer = (state=initialState, action) => {
                 catagory: action.catagory
             })
         case LIST_RECIEVED: 
-            // console.log(action.payload)
             return Object.assign({}, state, {
                 listRequested: false,
                 movieList: action.payload.results,
