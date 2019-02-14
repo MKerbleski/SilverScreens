@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
 import ListOfMovies from './components/listOfMovies'
 import styled from 'styled-components'
-import { connect } from 'react-redux';
+import { connect} from 'react-redux';
 import MovieLarge from './components/MovieLarge'
-import { Route } from "react-router-dom";
+import { Route, withRouter  } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 class App extends Component {
     render() {
         return (
           <AppDiv>
               <h1>Silver Screens</h1>
-              <Route path="/" exact component={ListOfMovies} />
+              <Link to="/movies">Back</Link>
+              <Route 
+                  path="/movies" 
+                  render={() => <ListOfMovies />} />
               {/* {this.props.store.movieList ? 
                         this.props.store.movieList.map(movie => {
                             return ( */}
-                              <Route path={`/:id`} component={MovieLarge}
-                               />
+              <Route 
+                  path={`/movie/:id`} 
+                  component={MovieLarge}
+                />
                                 {/* )
                         }) : null} */}
           </AppDiv>
@@ -30,7 +36,7 @@ const mapDispatchToProps = {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default withRouter(App)
 
 const AppDiv = styled.div`
   /* border: 0.1px solid red; */

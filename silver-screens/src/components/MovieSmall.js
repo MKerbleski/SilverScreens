@@ -30,7 +30,7 @@ class MovieSmall extends Component {
             // document.documentElement.scrollTop = selectedMovie.scrollHeight
         // }
         return(
-            <Link to={`${movie.id}`}>
+            <Link to={`movie/${movie.id}`}>
 
             <MovieSmallDiv id={movie.id}> 
                 {/* {this.props.store.selectedMovie === movie.id ? null :  */}

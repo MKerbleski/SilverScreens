@@ -35,6 +35,7 @@ class MovieLarge extends Component {
                 // }
                 return (
                     <MoviesLargeDiv id={movie.id}> 
+                        <Link to="/movies">Back</Link>
                         <div className="details">
                             <div>
                                 <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={`${movie.original_title} poster`} />   
@@ -72,54 +73,14 @@ const MoviesLargeDiv = styled.div`
     border: 1px solid red;
     /* min-width: 300px; */
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
     flex-wrap: wrap;
     margin: 1px;
     height: auto;
     box-sizing: border-box;
-    .preview {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        text-align: center;
-        color: white;
-        margin: 1px;
-        height: auto;
-        width: 100%;
-        overflow: auto;
-        :hover{
-            cursor: pointer;
-            strong {
-                opacity: 1;
-                font-size: 36px;
-            }
-            img {
-                /* width: 100%; */
-                filter: blur(1px)
-            }
-        }
-        strong {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: .8;
-            font-size: 40px;
-            max-width: 100%;
-            height: auto;
-            -webkit-text-stroke: 1px black;
-            @media (max-width: 500px) {
-                font-size: 10vw;
-            }
-        }
-        img {
-            /* border: 1px solid red; */
-            /* width: 100%; */
-            height: auto;
-            max-width: 100%;
-            /* margin: 1px; */
-        }
+    Link {
+
     }
     .details {
         display: flex;

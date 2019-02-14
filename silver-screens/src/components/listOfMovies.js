@@ -20,6 +20,7 @@ class ListOfMovies extends Component {
     }
 
     render(){
+        console.log("List render")
         // window.onscroll = () => {
         //     console.log(document.documentElement.scrollTop)
         //   }
