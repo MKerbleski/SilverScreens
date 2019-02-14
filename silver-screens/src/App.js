@@ -11,9 +11,10 @@ class App extends Component {
         return (
           <AppDiv>
               <h1>Silver Screens</h1>
-              <Link to="/movies">Back</Link>
+              <Link to="/">Back</Link>
               <Route 
-                  path="/movies" 
+                  path="/" 
+                  exact
                   render={() => <ListOfMovies />} />
               {/* {this.props.store.movieList ? 
                         this.props.store.movieList.map(movie => {
@@ -27,13 +28,6 @@ class App extends Component {
           </AppDiv>
         );
     }
-}
-const mapStateToProps = store => {
-  return { store: store };
-}
-
-const mapDispatchToProps = {
-
 }
 
 export default withRouter(App)
