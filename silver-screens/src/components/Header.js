@@ -8,6 +8,8 @@ import {
     requireUpdate
 } from '../actions'
 
+import ReactHtmlParser from 'react-html-parser'
+
 const catagories = [
     {'url':'now_playing',
     'name': 'Now Playing'}, 
@@ -28,29 +30,45 @@ class Header extends Component {
         e.preventDefault();
         this.props.requireUpdate();
     }
+    renderLetters(string){
+
+        let htmlString = '';
+        for (let i = 0; i<string.length; i++){
+            let next = `<span className="letter">${string[i]}</span>`
+            // console.log(next)
+            htmlString += next
+        }
+        // console.log(htmlString)
+
+        // let parser = new DomParser();
+        // let wrapper = document.createElement('span')
+        // wrapper.innerHTML = htmlString
+        // wrapper.getElementsByTagName('span')
+        // console.log(wrapper)
+
+        // var parser = new DOMParser();
+        // var wrapper = parser.parseFromString(htmlString, "text/html");
+        // wrapper.getElementsByTagName('span');
+        // console.log(wrapper)
+
+        return htmlString
+    }
 
     render(){
         return(
             <HeaderDiv> 
-                  <>
-                    <Link to='/'><h1>Silver Screens</h1></Link>
+                <div className="catagories">
+                    <Link to='/'><h1>Silver Screens</h1></Link> 
                     {this.props.store.movieDetails ? 
                         <Link to='/'>back</Link> :
-                        <div>
-                        {catagories.map(catagory => {
-                            return <button key={catagory.name} onClick={(e) => this.clickHandler(e)}>
-                            <Link 
-                                to={`/sort/${catagory.url}`}>{catagory.name}</Link> </button>
-                            {/* <button 
-                                key={catagory} 
-                                name={catagory} 
-                                style={{background: this.props.store.catagory === catagory ? 'green' : 'blue'}}
-                                onClick={() => this.props.changeCatagory(catagory)}>{catagory}</button> */}
-                        })}
-                        </div>
+                            <>{catagories.map(catagory => {
+                                return <div key={catagory.name} onClick={(e) => this.clickHandler(e)}>
+                                <Link 
+                                    to={`/sort/${catagory.url}`}>{ReactHtmlParser(this.renderLetters(catagory.name))}</Link> </div>
+                            })}</>
                     }
-                  </>
-                  <Search />
+                    <Search />
+                </div>
             </HeaderDiv>
         )
     }
@@ -67,9 +85,38 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
 const HeaderDiv = styled.header`
+    background: white;
     width: 100%;
     border: 1px solid green;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    .catagories{
+        border: 1px solid green;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-evenly;
+    }
+    div {
+        width: 100%;
+        border: 1px solid green;
+        border-bottom: 1px solid black;
+        font-family: 'Staatliches';
+        word-spacing: 10px;
+        display: flex;
+        justify-content: center;
+        a {
+            text-decoration: none;
+            span{
+                background: white;
+                margin: 1px;
+                padding: 1px;
+                color: black;
+                border: 1px solid gray;
+                bottom: 1px;
+            }
+        }
+    }
 `
