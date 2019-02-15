@@ -41,6 +41,7 @@ class SearchBar extends Component {
         return(
             <SearchBarDiv>
                 <input 
+                    placeholder="search here"
                     name="searchInput" 
                     value={this.state.searchInput}
                     onChange={(e) =>  
@@ -53,8 +54,8 @@ class SearchBar extends Component {
                     onClick={(e) =>      
                         this.inputHandler(e)
                         // this.props.requireUpdate()
-                        }>super</Link>
-                <Link to="/">clear</Link>
+                        }>Search</Link>
+                <Link to="/">Clear</Link>
             </SearchBarDiv>
         )
     }
@@ -72,7 +73,13 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)
 
 const SearchBarDiv = styled.div`
-    border: 1px solid red;
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    align-items: space-between;
+    justify-content: space-between;
+    a {
+        color: black;
+        margin-left: 5px;
+    }
+
 `

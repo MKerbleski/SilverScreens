@@ -44,9 +44,7 @@ class ListOfMovies extends Component {
             return <Redirect to='/' />
         }
         return(
-            <ListOfMoviesDiv> 
-                <h1>{this.props.store.catagory}</h1>
-                
+            <ListOfMoviesDiv>                
                 <div className="movies">
                 {this.props.store.movieList ? 
                     this.props.store.movieList.map(movie => {

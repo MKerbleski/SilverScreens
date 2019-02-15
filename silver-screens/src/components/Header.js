@@ -38,7 +38,7 @@ class Header extends Component {
             // console.log(next)
             htmlString += next
         }
-        console.log(htmlString)
+        // console.log(htmlString)
 
         // let parser = new DomParser();
         // let wrapper = document.createElement('span')
@@ -62,7 +62,9 @@ class Header extends Component {
                     {this.props.store.movieDetails ? 
                         <Link to='/'>back</Link> :
                             <>{catagories.map(catagory => {
-                                return <div key={catagory.name} onClick={(e) => this.clickHandler(e)}>
+                                return <div 
+                                style={{background: this.props.store.catagory === catagory.url ? 'yellow':null}}
+                                key={catagory.name} onClick={(e) => this.clickHandler(e)}>
                                 <Link 
                                     to={`/sort/${catagory.url}`}>{ReactHtmlParser(this.renderLetters(catagory.name))}</Link> </div>
                             })}</>
@@ -92,7 +94,7 @@ const HeaderDiv = styled.header`
     flex-direction: row;
     justify-content: space-between;
     .catagories{
-        border: 1px solid green;
+        /* border: 1px solid green; */
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -101,8 +103,9 @@ const HeaderDiv = styled.header`
     }
     div {
         width: 100%;
-        border: 1px solid green;
-        border-bottom: 1px solid black;
+        /* border: 1px solid green; */
+        /* border-bottom: 1px solid black; */
+        border-top: 1px solid black;
         font-family: 'Staatliches';
         word-spacing: 10px;
         display: flex;
