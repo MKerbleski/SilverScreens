@@ -27,16 +27,17 @@ export const changeCatagory = (catagory) => {
 export const fetchList = (catagory, pageNum=1, searchInput=null) => {
     return function(dispatch){
         dispatch({type: LIST_REQUESTED})
+        console.log(catagory)
         switch(catagory){
-            case 'Now Playing':
-                catagory = 'now_playing'
-                break;
-            case 'Popular':
-                catagory = 'popular'
-                break;
-            case 'Top Rated':
-                catagory = 'top_rated'
-                break;
+            // case 'Now_playing':
+            //     catagory = 'now_playing'
+            //     break;
+            // case 'Popular':
+            //     catagory = 'popular'
+            //     break;
+            // case 'Top Rated':
+            //     catagory = 'top_rated'
+            //     break;
             case 'search':
                 if(searchInput===''){
                     catagory = 'now_playing'

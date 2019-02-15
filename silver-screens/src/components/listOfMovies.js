@@ -23,18 +23,19 @@ class ListOfMovies extends Component {
 
     getList(){
         if (this.props.match.url.includes('search')){
-            console.log("search")
             let query = this.props.match.url.slice(8)
-            console.log(query)
             this.setState({query: query})
             this.props.fetchList('search', 1, query)
         } else {
-            this.props.fetchList(sortCatagories[0])
+            if(this.props.match.url == '/'){
+                this.props.fetchList('now_playing')
+            } else {
+                this.props.fetchList(this.props.match.url)
+            }
         }
     }
 
     render(){
-        console.log("List render", this.props.store.update)
         if(this.props.store.update){
             console.log("update REQUIRED")
             this.getList()

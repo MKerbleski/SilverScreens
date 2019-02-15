@@ -65,16 +65,16 @@ const MovieSmallDiv = styled.div`
     overflow: hidden;
     @media(min-width: 500px){
         width: 49.5%;
-        color: green;
+        /* color: green; */
         max-height: 200px;
     }
     @media(min-width: 1000px){
         width: 33%;
-        color: blue;
+        /* color: blue; */
     }
     @media(min-width: 1500px){
         width: 24.5%;
-        color: red;
+        /* color: red; */
     }
     :hover{
         cursor: pointer;

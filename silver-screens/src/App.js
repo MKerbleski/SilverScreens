@@ -8,12 +8,16 @@ import Header from './components/Header'
 
 class App extends Component {
     render() {
+
         return (
           <AppDiv>
              <Header />
               <Route
                   path="/" 
                   exact
+                  component={ListOfMovies} />
+              <Route
+                  path="/:catagory" 
                   component={ListOfMovies} />
               <Route
                   path={`/movie/:id`} 

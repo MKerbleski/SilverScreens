@@ -13,32 +13,33 @@ class SearchBar extends Component {
         }
     }
 
-    inputHandler(e){
-        e.preventDefault()
-        if(e.target.name ==='search'){
-            this.props.fetchList('search', 1, this.state.searchInput)
-        } else {
-            this.setState({
-                [e.target.name]: e.target.value
-            })
-        }
-    }
+    // inputHandler(e){
+    //     e.preventDefault()
+    //     if(e.target.name ==='search'){
+    //         this.props.fetchList('search', 1, this.state.searchInput)
+    //     } else {
+    //         this.setState({
+    //             [e.target.name]: e.target.value
+    //         })
+    //     }
+    // }
 
     render(){
         return(
             <SearchBarDiv>
-                {/* <form name='search' onSubmit={(e) => this.inputHandler(e)}> */}
-                    <input 
-                        name="searchInput" 
-                        value={this.state.searchInput}
-                        onChange={(e) =>  this.setState({
-                [e.target.name]: e.target.value
-            })}
+                <input 
+                    name="searchInput" 
+                    value={this.state.searchInput}
+                    onChange={(e) =>  
+                        this.setState({
+                            [e.target.name]: e.target.value
+                        })}
                     >{this.value}</input>
-                    <Link to={`/search/${this.state.searchInput}` 
-                    } onClick={() => this.props.requireUpdate()}>super</Link>
-                    {/* <input type="submit" value="Search" /> */}
-                {/* </form> */}
+                <Link 
+                    to={`/search/${this.state.searchInput}`} 
+                    onClick={() =>      
+                        this.props.requireUpdate()}>super</Link>
+                <Link to="/">clear</Link>
             </SearchBarDiv>
         )
     }
