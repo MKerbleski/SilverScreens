@@ -38,7 +38,7 @@ class Header extends Component {
             // console.log(next)
             htmlString += next
         }
-        // console.log(htmlString)
+        console.log(htmlString)
 
         // let parser = new DomParser();
         // let wrapper = document.createElement('span')

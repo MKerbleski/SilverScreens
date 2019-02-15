@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Nav from './Nav'
 import Search from './Search'
 import MovieSmall from './MovieSmall'
-
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { 
     // changeCatagory, 
@@ -35,8 +35,13 @@ class ListOfMovies extends Component {
 
     render(){
         if(this.props.store.update){
-            console.log("update REQUIRED")
+            // console.log("update REQUIRED")
             this.getList()
+        }
+        console.log(this.props)
+        if(this.props.match.url === 'search/'){
+            console.log("REDIRECt")
+            return <Redirect to='/' />
         }
         return(
             <ListOfMoviesDiv> 
