@@ -38,10 +38,8 @@ class Header extends Component {
                         <Link to='/'>back</Link> :
                         <div>
                         {catagories.map(catagory => {
-                            return <button onClick={(e) => this.clickHandler(e)}>
-
+                            return <button key={catagory.name} onClick={(e) => this.clickHandler(e)}>
                             <Link 
-                                 
                                 to={`/sort/${catagory.url}`}>{catagory.name}</Link> </button>
                             {/* <button 
                                 key={catagory} 
