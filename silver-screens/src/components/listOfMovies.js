@@ -31,7 +31,6 @@ class ListOfMovies extends Component {
                         style={{background: this.props.store.catagory === catagory ? 'green' : 'blue'}}
                         onClick={() => this.props.changeCatagory(catagory)}>{catagory}</button>
                 })}
-                <Search />
                 <div className="movies">
                 {this.props.store.movieList ? 
                     this.props.store.movieList.map(movie => {

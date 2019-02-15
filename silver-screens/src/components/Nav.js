@@ -8,7 +8,7 @@ class Nav extends Component {
         const { pageNum, catagory, totalPages } = this.props.store
         return(
             <NavDiv> 
-                {pageNum === 1 ? null :
+                {pageNum === 1 ? <div></div> :
                     <button onClick={() => {
                         this.props.changePage(catagory, pageNum-1)}}>Prev</button>}
                 <span>page: {pageNum} of {totalPages}</span>
@@ -36,5 +36,5 @@ const NavDiv = styled.div`
     padding: 10px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 `

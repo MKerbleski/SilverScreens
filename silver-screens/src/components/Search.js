@@ -8,6 +8,7 @@ class SearchBar extends Component {
         super(props)
         this.state = {
             searchInput: '',
+            active: false,
         }
     }
 
@@ -24,7 +25,7 @@ class SearchBar extends Component {
 
     render(){
         return(
-            <SearchBarDiv> 
+            <SearchBarDiv>
                 <form name='search' onSubmit={(e) => this.inputHandler(e)}>
                     <input 
                         name="searchInput" 

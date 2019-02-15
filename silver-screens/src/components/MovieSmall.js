@@ -20,6 +20,7 @@ class MovieSmall extends Component {
 
     render(){
         const { movie } = this.props
+        console.log(movie)
         return(
             <MovieSmallDiv 
                 as={Link}
@@ -28,8 +29,8 @@ class MovieSmall extends Component {
                 onClick={() => this.selector(movie.id)}
                 id={movie.id}> 
                     <img 
-                        src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}` || `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} 
-                        alt={`${movie.poster_path} poster`} />
+                        src={movie.backdrop_path ?`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}` : `https://image.tmdb.org/t/p/w500/${movie.poster_path}`} 
+                        alt={`${movie.original_title} poster`} />
                     <strong>{movie.original_title}</strong>
             </MovieSmallDiv>
         )
@@ -56,7 +57,8 @@ const MovieSmallDiv = styled.div`
     width: 100%;
     color: white;
     margin: 1px;
-    height: auto;
+    /* height: auto; */
+    max-height: 250px;
     max-width: 500px;
     overflow: hidden;
     @media(min-width: 500px){

@@ -28,16 +28,7 @@ class MovieLarge extends Component {
     render(){
         console.log(this.props.store)
         const  movie  = this.props.store.movieDetails
-        console.log(movie)
         if(movie){
-
-            // if(this.props.store.selectedMovie === movie.id){
-                //     const selectedMovie = document.getElementById(`${this.props.store.selectedMovie}`)
-                //     console.log(selectedMovie)
-                //     selectedMovie.scrollIntoView({behavior: "smooth",  block: "start"})
-                // console.log(selectedMovie.scrollHeight)
-                // document.documentElement.scrollTop = selectedMovie.scrollHeight
-                // }
                 return (
                     <MoviesLargeDiv id={movie.id}> 
                         <Link to="/">Back</Link>

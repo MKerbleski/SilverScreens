@@ -1,28 +1,20 @@
 import React, { Component } from 'react';
-import ListOfMovies from './components/listOfMovies'
 import styled from 'styled-components'
-import { connect} from 'react-redux';
+
+import { Route, withRouter } from "react-router-dom";
 import MovieLarge from './components/MovieLarge'
-import { Route, withRouter  } from "react-router-dom";
-import { Link } from 'react-router-dom';
-import Search from './components/Search'
+import ListOfMovies from './components/listOfMovies'
+import Header from './components/Header'
 
 class App extends Component {
     render() {
-      console.log(this.props)
         return (
           <AppDiv>
-              <header>
-                  <>
-                      {this.props.detailed? <Link></Link>: null}
-                      <h1>Silver Screens</h1>
-                  </>
-                  <Search />
-              </header>
+             <Header />
               <Route
                   path="/" 
                   exact
-                  render={() => <ListOfMovies />} />
+                  component={ListOfMovies} />
               <Route
                   path={`/movie/:id`} 
                   component={MovieLarge} />
@@ -31,11 +23,9 @@ class App extends Component {
     }
 }
 
-const mapStateToProps = store => {
-  return { store: store };
-}
 
-export default withRouter(connect(mapStateToProps)(App))
+
+export default withRouter(App)
 
 const AppDiv = styled.div`
     /* border: 0.1px solid red; */
@@ -49,11 +39,4 @@ const AppDiv = styled.div`
     height: auto;
     margin: 0;
     padding: 0;
-    header {
-        width: 100%;
-        border: 1px solid green;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
 `
