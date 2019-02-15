@@ -28,8 +28,8 @@ class MovieSmall extends Component {
                 onClick={() => this.selector(movie.id)}
                 id={movie.id}> 
                     <img 
-                        src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} 
-                        alt={`${movie.original_title} poster`} />
+                        src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}` || `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} 
+                        alt={`${movie.poster_path} poster`} />
                     <strong>{movie.original_title}</strong>
             </MovieSmallDiv>
         )
@@ -89,15 +89,12 @@ const MovieSmallDiv = styled.div`
         -webkit-text-stroke: 1px black;
         @media (min-width: 500px) {
             font-size: 4vw;
-            color: green;
         }
         @media (min-width: 1000px) {
             font-size: 3vw;
-            color: blue;
         }
         @media (min-width: 1500px) {
             font-size: 2vw;
-            color: red;
         }
     }
     img {

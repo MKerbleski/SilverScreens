@@ -2,7 +2,8 @@ import React , { Component } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux';
 import { 
-    getMovieDetails
+    getMovieDetails,
+    clearMovieDetails    
 } from '../actions'
 // import axios from 'axios'
 import { Link } from 'react-router-dom';
@@ -18,6 +19,10 @@ class MovieLarge extends Component {
     componentDidMount(){
         console.log("CDM", this.props)
         this.props.getMovieDetails(this.props.match.params.id)
+    }
+
+    componentWillUnmount(){
+        this.props.clearMovieDetails()
     }
 
     render(){
@@ -64,7 +69,8 @@ const mapStateToProps = store => {
 }
 
 const mapDispatchToProps = {
-    getMovieDetails
+    getMovieDetails,
+    clearMovieDetails
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieLarge)

@@ -7,6 +7,7 @@ export const SELECT_MOVIE = 'SELECT_MOVIE';
 export const CHANGE_CATAGORY = 'CHANGE_CATAGORY';
 export const LIST_REQUESTED = 'LIST_REQUESTED';
 export const MOVIE_DETAILS = 'MOVIE_DETAILS';
+export const CLEAR_DETAILS = 'CLEAR_DETAILS';
 
 export const changePage = (catagory, pageNum=1) => {
     return function(dispatch){
@@ -91,5 +92,11 @@ export const getMovieDetails = (movieId) => {
             dispatch({type: ERROR, payload: error})
             console.log(error)
         })
+    }
+}
+
+export const clearMovieDetails = () => {
+    return function(dispatch){
+        dispatch({type: CLEAR_DETAILS})
     }
 }

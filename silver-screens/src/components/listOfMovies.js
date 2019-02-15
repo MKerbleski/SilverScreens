@@ -21,12 +21,9 @@ class ListOfMovies extends Component {
 
     render(){
         console.log("List render")
-        // window.onscroll = () => {
-        //     console.log(document.documentElement.scrollTop)
-        //   }
         return(
             <ListOfMoviesDiv> 
-                <h1>list of movies</h1>
+                <h1>{this.props.store.catagory}</h1>
                 {sortCatagories.map(catagory => {
                     return <button 
                         key={catagory} 

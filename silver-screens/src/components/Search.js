@@ -50,4 +50,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)
 
 const SearchBarDiv = styled.div`
     border: 1px solid red;
+    display: flex;
+    align-items: center;
 `
