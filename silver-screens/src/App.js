@@ -17,7 +17,7 @@ class App extends Component {
                   exact
                   component={ListOfMovies} />
               <Route
-                  path="/:catagory" 
+                  path="/sort/:catagory" 
                   component={ListOfMovies} />
               <Route
                   path={`/movie/:id`} 

@@ -6,17 +6,11 @@ import MovieSmall from './MovieSmall'
 
 import { connect } from 'react-redux';
 import { 
-    changeCatagory, 
+    // changeCatagory, 
     fetchList,
 } from '../actions'
 
-
-const sortCatagories = ['Now Playing', 'Popular', 'Top Rated']
-
 class ListOfMovies extends Component {
-    state = {
-        query: ''
-    }
     componentDidMount(){
        this.getList();
     }
@@ -24,13 +18,17 @@ class ListOfMovies extends Component {
     getList(){
         if (this.props.match.url.includes('search')){
             let query = this.props.match.url.slice(8)
-            this.setState({query: query})
             this.props.fetchList('search', 1, query)
+        } else if (this.props.match.url.includes('sort')){
+            let catagory = this.props.match.url.slice(6)
+            this.props.fetchList(catagory)
         } else {
             if(this.props.match.url == '/'){
-                this.props.fetchList('now_playing')
+                let defaultCat = 'now_playing'
+                this.props.fetchList(defaultCat)
             } else {
-                this.props.fetchList(this.props.match.url)
+                let catagory = this.props.match.url.slice(1)
+                this.props.fetchList(catagory)
             }
         }
     }
@@ -43,13 +41,7 @@ class ListOfMovies extends Component {
         return(
             <ListOfMoviesDiv> 
                 <h1>{this.props.store.catagory}</h1>
-                {sortCatagories.map(catagory => {
-                    return <button 
-                        key={catagory} 
-                        name={catagory} 
-                        style={{background: this.props.store.catagory === catagory ? 'green' : 'blue'}}
-                        onClick={() => this.props.changeCatagory(catagory)}>{catagory}</button>
-                })}
+                
                 <div className="movies">
                 {this.props.store.movieList ? 
                     this.props.store.movieList.map(movie => {
@@ -69,7 +61,7 @@ const mapStateToProps = store => {
 }
 
 const mapDispatchToProps = {
-    changeCatagory,
+    // changeCatagory,
     fetchList,
 }
 

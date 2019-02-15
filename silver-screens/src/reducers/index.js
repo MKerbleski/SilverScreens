@@ -45,6 +45,7 @@ export const reducer = (state=initialState, action) => {
         case LIST_REQUESTED: 
             return Object.assign({}, state, {
                 listRequested: true,
+                catagory: action.payload,
                 update: false
             })
         case CHANGE_CATAGORY: 

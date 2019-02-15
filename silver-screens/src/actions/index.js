@@ -17,41 +17,27 @@ export const changePage = (catagory, pageNum=1) => {
     }
 }
 
-export const changeCatagory = (catagory) => {
-    return function(dispatch){
-        dispatch({type: CHANGE_CATAGORY, catagory: catagory});
-        dispatch(fetchList(catagory, 1))
-    }
-}
+// export const changeCatagory = (catagory) => {
+//     return function(dispatch){
+//         dispatch({type: CHANGE_CATAGORY, catagory: catagory});
+//         dispatch(fetchList(catagory, 1))
+//     }
+// }
 
 export const fetchList = (catagory, pageNum=1, searchInput=null) => {
     return function(dispatch){
-        dispatch({type: LIST_REQUESTED})
+        dispatch({type: LIST_REQUESTED, payload: catagory})
         console.log(catagory)
-        switch(catagory){
-            // case 'Now_playing':
-            //     catagory = 'now_playing'
-            //     break;
-            // case 'Popular':
-            //     catagory = 'popular'
-            //     break;
-            // case 'Top Rated':
-            //     catagory = 'top_rated'
-            //     break;
-            case 'search':
-                if(searchInput===''){
-                    catagory = 'now_playing'
-                } else {
-                    catagory = 'search'
-                    searchInput = `&include_adult=false&query=${searchInput}`
-                }
-                break;
-            default:
-                dispatch({type: ERROR, payload: "unknown catagory"});
-                break;
+        if(catagory === 'search'){
+            if(searchInput===''){
+                catagory = 'now_playing'
+            } else {
+                catagory = 'search'
+                searchInput = `&include_adult=false&query=${searchInput}`
+            }
         }
         if (catagory === 'search'){
-            //This section of code was done to get around a CORS issue, still research why axios will not work in this situation
+            //This section of code was done to get around a CORS issue, still need to research why axios will not work in this specific situation
             var data = "{}";
             var xhr = new XMLHttpRequest();
             xhr.withCredentials = false;
