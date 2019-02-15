@@ -79,9 +79,7 @@ const MoviesLargeDiv = styled.div`
     margin: 1px;
     height: auto;
     box-sizing: border-box;
-    Link {
 
-    }
     .details {
         display: flex;
         flex-direction: column;

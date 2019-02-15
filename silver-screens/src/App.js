@@ -12,17 +12,16 @@ class App extends Component {
           <AppDiv>
               <h1>Silver Screens</h1>
               <Link to="/">Back</Link>
-              <Route 
+              <Route
                   path="/" 
                   exact
                   render={() => <ListOfMovies />} />
               {/* {this.props.store.movieList ? 
                         this.props.store.movieList.map(movie => {
                             return ( */}
-              <Route 
+              <Route
                   path={`/movie/:id`} 
-                  component={MovieLarge}
-                />
+                  component={MovieLarge} />
                                 {/* )
                         }) : null} */}
           </AppDiv>

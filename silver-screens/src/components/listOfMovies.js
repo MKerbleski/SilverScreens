@@ -38,11 +38,7 @@ class ListOfMovies extends Component {
                 <div className="movies">
                 {this.props.store.movieList ? 
                     this.props.store.movieList.map(movie => {
-                        return (
-                            <>
-                            <MovieSmall key={movie.id} movie={movie} />
-                            </>
-                            )
+                        return <MovieSmall key={movie.id} movie={movie} />
                     }) : <h1>loading...</h1>}
                 </div>
                 {this.props.store.movieList && this.props.store.movieList.length === 0 ? 
@@ -70,15 +66,18 @@ const ListOfMoviesDiv = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    max-width: 100%;
     overflow: hidden;
-    .movies{
+    max-width: 2000px;
+    .movies {
         /* border: 1px solid green; */
         display: flex;
         flex-direction: row;
-        align-content: space-around;
-        justify-content: center;
         flex-wrap: wrap;
+        align-content: space-between;
+        justify-content: space-evenly;
         width: 100%;
+        @media (max-width: 500px) {
+            /* max-width: 49%; */
+        }
     }
 `

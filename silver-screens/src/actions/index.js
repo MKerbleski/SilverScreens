@@ -86,7 +86,7 @@ export const getMovieDetails = (movieId) => {
     return function(dispatch){
         axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_MOVIE_DB_KEY}&language=en-US`).then(res => {
             dispatch({type: MOVIE_DETAILS, payload: res})
-            console.log(res)
+            // console.log(res)
         }).catch(error => {
             dispatch({type: ERROR, payload: error})
             console.log(error)
