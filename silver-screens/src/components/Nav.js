@@ -12,7 +12,7 @@ class Nav extends Component {
                     <button onClick={() => {
                         this.props.changePage(catagory, pageNum-1)}}>Prev</button>}
                 <span>page: {pageNum} of {totalPages}</span>
-                {totalPages === pageNum ? null :
+                {totalPages === pageNum ? <div></div> :
                      <button onClick={() => {
                         this.props.changePage(catagory, pageNum+1)}}>Next</button>}
             </NavDiv>

@@ -1,7 +1,8 @@
 import React , { Component } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux';
-import { fetchList } from '../actions'
+import { fetchList, requireUpdate } from '../actions'
+import { Link } from "react-router-dom";
 
 class SearchBar extends Component {
     constructor(props){
@@ -26,14 +27,18 @@ class SearchBar extends Component {
     render(){
         return(
             <SearchBarDiv>
-                <form name='search' onSubmit={(e) => this.inputHandler(e)}>
+                {/* <form name='search' onSubmit={(e) => this.inputHandler(e)}> */}
                     <input 
                         name="searchInput" 
                         value={this.state.searchInput}
-                        onChange={(e) => this.inputHandler(e)}
+                        onChange={(e) =>  this.setState({
+                [e.target.name]: e.target.value
+            })}
                     >{this.value}</input>
-                    <input type="submit" value="Search" />
-                </form>
+                    <Link to={`/search/${this.state.searchInput}` 
+                    } onClick={() => this.props.requireUpdate()}>super</Link>
+                    {/* <input type="submit" value="Search" /> */}
+                {/* </form> */}
             </SearchBarDiv>
         )
     }
@@ -44,7 +49,8 @@ const mapStateToProps = store => {
 }
 
 const mapDispatchToProps = {
-    fetchList
+    fetchList,
+    requireUpdate
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)

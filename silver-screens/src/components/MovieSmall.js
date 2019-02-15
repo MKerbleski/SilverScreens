@@ -20,11 +20,10 @@ class MovieSmall extends Component {
 
     render(){
         const { movie } = this.props
-        console.log(movie)
         return(
             <MovieSmallDiv 
                 as={Link}
-                to={`movie/${movie.id}`}
+                to={`/movie/${movie.id}`}
                 className='preview' 
                 onClick={() => this.selector(movie.id)}
                 id={movie.id}> 
@@ -36,6 +35,8 @@ class MovieSmall extends Component {
         )
     }
 }
+
+let backdropHeight = 0;
 
 const mapStateToProps = store => {
     return { store: store };
@@ -59,16 +60,21 @@ const MovieSmallDiv = styled.div`
     margin: 1px;
     /* height: auto; */
     max-height: 250px;
+    min-height: 200px;
     max-width: 500px;
     overflow: hidden;
     @media(min-width: 500px){
         width: 49.5%;
+        color: green;
+        max-height: 200px;
     }
     @media(min-width: 1000px){
         width: 33%;
+        color: blue;
     }
     @media(min-width: 1500px){
         width: 24.5%;
+        color: red;
     }
     :hover{
         cursor: pointer;

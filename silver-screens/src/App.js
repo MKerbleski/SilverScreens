@@ -18,6 +18,9 @@ class App extends Component {
               <Route
                   path={`/movie/:id`} 
                   component={MovieLarge} />
+              <Route
+                  path={`/search/:params`} 
+                  component={ListOfMovies} />
           </AppDiv>
         );
     }

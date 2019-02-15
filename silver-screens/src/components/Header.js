@@ -16,7 +16,7 @@ class Header extends Component {
         return(
             <HeaderDiv> 
                   <>
-                    <h1>Silver Screens</h1>
+                    <Link to='/'><h1>Silver Screens</h1></Link>
                     {this.props.store.movieDetails ? 
                         <Link to='/' >back</Link> :
                         null}

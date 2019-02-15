@@ -8,6 +8,7 @@ export const CHANGE_CATAGORY = 'CHANGE_CATAGORY';
 export const LIST_REQUESTED = 'LIST_REQUESTED';
 export const MOVIE_DETAILS = 'MOVIE_DETAILS';
 export const CLEAR_DETAILS = 'CLEAR_DETAILS';
+export const REQUIRE_UPDATE = 'REQUIRE_UPDATE';
 
 export const changePage = (catagory, pageNum=1) => {
     return function(dispatch){
@@ -98,5 +99,11 @@ export const getMovieDetails = (movieId) => {
 export const clearMovieDetails = () => {
     return function(dispatch){
         dispatch({type: CLEAR_DETAILS})
+    }
+}
+
+export const requireUpdate = () => {
+    return function(dispatch){
+        dispatch({type: REQUIRE_UPDATE})
     }
 }
