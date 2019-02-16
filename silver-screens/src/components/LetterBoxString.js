@@ -22,7 +22,7 @@ class LetterBoxString extends Component {
     renderLetters(string){
         let htmlString = '<span class="word">';
         for (let i = 0; i < string.length; i++){
-            let next = `<span letter=${string[i]} class="letter">${string[i]}</span>`
+            let next = `<span class="letter">${string[i]}</span>`
             htmlString += next
         }
         htmlString+='</span>'
@@ -32,7 +32,7 @@ class LetterBoxString extends Component {
     render(){
         return(
             <LetterBoxStringDiv 
-                className='line'
+                className='word'
                 highlight={this.props.highlight}
                 // catagory={this.props.catagory}
                 // selectedCatagory={this.props.selectedCatagory}
@@ -58,10 +58,28 @@ export default connect(mapStateToProps, mapDispatchToProps)(LetterBoxString);
 const LetterBoxStringDiv = styled.div`
     /* border: 1px solid green; */
     background: #FFFFFF;
-    background: black;
-    line-height: 25px;
+    /* background: black; */
+    /* line-height: 25px; */
     .word {
         /* background: orange; */
+        text-decoration: none;
+        width: 100%;
+        /* border: 1px solid green; */
+        /* border-bottom: 1px solid black; */
+        /* border-top: 1px solid black; */
+        font-family: 'Staatliches';
+        /* margin-left: 10px; */
+        margin-right: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: black;
+        height: auto;
+        /* background: green; */
+        a {
+            text-decoration: none;
+        }
         .letter {
             background: red;
             background: ${(props) => {

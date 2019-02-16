@@ -40,7 +40,7 @@ class SearchBar extends Component {
         if(this.state.check){
         }
         return(
-            <SearchBarDiv className='line'>
+            <SearchBarDiv>
                 <input 
                     placeholder="search here"
                     name="searchInput" 
@@ -50,12 +50,12 @@ class SearchBar extends Component {
                             [e.target.name]: e.target.value
                         })}
                     >{this.value}</input>
-                    <LetterBoxString 
-                        word='Search'
-                        url={this.state.searchInput.length > 0 ? `/search/${this.state.searchInput}` : '/'} />
-                    <LetterBoxString 
-                        word='Clear'
-                        url='/' />
+                <LetterBoxString 
+                    word='Search'
+                    url={this.state.searchInput.length > 0 ? `/search/${this.state.searchInput}` : '/'} />
+                <LetterBoxString 
+                    word='Clear'
+                    url='/' />
             </SearchBarDiv>
         )
     }
@@ -73,13 +73,23 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)
 
 const SearchBarDiv = styled.div`
+    /* border: 1px solid red;
     display: flex;
     flex-direction: row;
-    align-items: space-between;
-    justify-content: space-between;
+    align-items: flex-end;
+    justify-content: space-between; */
+    .lineItem {
+        border: 1px solid green;
+        margin: 0;
+        height: auto;
+    }
     a {
+        margin: 0;
         color: black;
         margin-left: 5px;
+    }
+    input {
+        margin: 0;
     }
 
 `

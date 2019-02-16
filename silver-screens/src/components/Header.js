@@ -34,16 +34,20 @@ class Header extends Component {
                 {this.props.store.movieDetails ? 
                     <Link className="line" to='/'>back</Link> :
                         <>{catagories.map(catagory => {
-                            return <LetterBoxString
+                            return <div className="line">
+                            {catagory.name.split(' ').map(word => {
+                                return <LetterBoxString
                                         highlight={this.props.store.catagory === catagory.url}
-                                        key={catagory.name} 
-                                        word={catagory.name}
-                                        className="line"
+                                        key={word} 
+                                        word={word}
                                         url={`/sort/${catagory.url}`}
                                         />
+                            })}
+                            
+                            </div>
                         })}</>
                 }
-                <Search className='line' />
+                <Search className="hey" />
             </HeaderDiv>
         )
     }
@@ -67,23 +71,24 @@ const HeaderDiv = styled.header`
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    .hey{
+        background: green;
+    }
     .line {
-        text-decoration: none;
+        /* text-decoration: none; */
         width: 100%;
         /* border: 1px solid green; */
         /* border-bottom: 1px solid black; */
         border-top: 1px solid black;
-        font-family: 'Staatliches';
-        word-spacing: 10px;
+        /* font-family: 'Staatliches'; */
+        /* word-spacing: 10px; */
         display: flex;
-        justify-content: center;
+        flex-direction: row;
         align-items: center;
+        justify-content: center;
         text-align: center;
-        /* background: green; */
-        a {
-            text-decoration: none;
-        }
-    }
+        background: white;
+        background: green;
         h1 {
             font-size: 5vw;
             font-family: marqueeregular, Arial, Helvetica, sans-serif;
@@ -92,4 +97,8 @@ const HeaderDiv = styled.header`
             width: 100%;
             margin: 0;
         }
+    }
+    a {
+        text-decoration: none;
+    }
 `
