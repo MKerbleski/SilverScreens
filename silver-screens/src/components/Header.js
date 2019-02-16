@@ -26,31 +26,18 @@ class Header extends Component {
 
         }
     }
+
     clickHandler(e){
         e.preventDefault();
         this.props.requireUpdate();
     }
-    renderLetters(string){
 
+    renderLetters(string){
         let htmlString = '';
-        for (let i = 0; i<string.length; i++){
+        for (let i = 0; i < string.length; i++){
             let next = `<span className="letter">${string[i]}</span>`
-            // console.log(next)
             htmlString += next
         }
-        // console.log(htmlString)
-
-        // let parser = new DomParser();
-        // let wrapper = document.createElement('span')
-        // wrapper.innerHTML = htmlString
-        // wrapper.getElementsByTagName('span')
-        // console.log(wrapper)
-
-        // var parser = new DOMParser();
-        // var wrapper = parser.parseFromString(htmlString, "text/html");
-        // wrapper.getElementsByTagName('span');
-        // console.log(wrapper)
-
         return htmlString
     }
 
@@ -61,13 +48,18 @@ class Header extends Component {
                     <Link to='/'><h1>Silver Screens</h1></Link> 
                     {this.props.store.movieDetails ? 
                         <Link to='/'>back</Link> :
-                            <>{catagories.map(catagory => {
-                                return <div 
-                                style={{background: this.props.store.catagory === catagory.url ? 'yellow':null}}
-                                key={catagory.name} onClick={(e) => this.clickHandler(e)}>
-                                <Link 
-                                    to={`/sort/${catagory.url}`}>{ReactHtmlParser(this.renderLetters(catagory.name))}</Link> </div>
-                            })}</>
+                            <>
+                            {catagories.map(catagory => {
+                                return (
+                                    <div 
+                                        style={{background: this.props.store.catagory === catagory.url ? 'yellow':null}}
+                                        key={catagory.name} 
+                                        onClick={(e) => this.clickHandler(e)}>
+                                        <Link to={`/sort/${catagory.url}`}>{ReactHtmlParser(this.renderLetters(catagory.name))}</Link> 
+                                    </div>
+                                )
+                            })}
+                            </>
                     }
                     <Search />
                 </div>
@@ -87,18 +79,23 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
 const HeaderDiv = styled.header`
-    background: white;
+    /* background: white; */
     width: 100%;
     border: 1px solid green;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    h1 {
+        font-size: 5vw;
+        font-family: marqueeregular, Arial, Helvetica, sans-serif;
+        color: black;
+    }
     .catagories{
         /* border: 1px solid green; */
         width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         justify-content: space-evenly;
     }
     div {
