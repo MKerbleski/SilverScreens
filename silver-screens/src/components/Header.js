@@ -1,14 +1,14 @@
 import React , { Component } from 'react'
 import styled from 'styled-components'
-import { Link } from "react-router-dom";
+
 import Search from './Search'
 import { connect } from 'react-redux';
 
-import { 
-    requireUpdate
-} from '../actions'
-
-import ReactHtmlParser from 'react-html-parser'
+// import { 
+//     requireUpdate
+// } from '../actions'
+import { Link } from "react-router-dom";
+import LetterBox from './LetterBox';
 
 const catagories = [
     {'url':'now_playing',
@@ -27,20 +27,6 @@ class Header extends Component {
         }
     }
 
-    clickHandler(e){
-        e.preventDefault();
-        this.props.requireUpdate();
-    }
-
-    renderLetters(string){
-        let htmlString = '';
-        for (let i = 0; i < string.length; i++){
-            let next = `<span className="letter">${string[i]}</span>`
-            htmlString += next
-        }
-        return htmlString
-    }
-
     render(){
         return(
             <HeaderDiv> 
@@ -48,18 +34,12 @@ class Header extends Component {
                     <Link to='/'><h1>Silver Screens</h1></Link> 
                     {this.props.store.movieDetails ? 
                         <Link to='/'>back</Link> :
-                            <>
-                            {catagories.map(catagory => {
-                                return (
-                                    <div 
-                                        style={{background: this.props.store.catagory === catagory.url ? 'yellow':null}}
-                                        key={catagory.name} 
-                                        onClick={(e) => this.clickHandler(e)}>
-                                        <Link to={`/sort/${catagory.url}`}>{ReactHtmlParser(this.renderLetters(catagory.name))}</Link> 
-                                    </div>
-                                )
-                            })}
-                            </>
+                            <>{catagories.map(catagory => {
+                                return <LetterBox 
+                                            key={catagory.name} 
+                                            catagory={catagory} 
+                                            selectedCatagory={this.props.store.catagory} />
+                            })}</>
                     }
                     <Search />
                 </div>
@@ -72,11 +52,11 @@ const mapStateToProps = store => {
     return { store: store };
 }
 
-const mapDispatchToProps = {
-    requireUpdate
-}
+// const mapDispatchToProps = {
+//     requireUpdate
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps)(Header);
 
 const HeaderDiv = styled.header`
     /* background: white; */
@@ -109,14 +89,6 @@ const HeaderDiv = styled.header`
         justify-content: center;
         a {
             text-decoration: none;
-            span{
-                background: white;
-                margin: 1px;
-                padding: 1px;
-                color: black;
-                border: 1px solid gray;
-                bottom: 1px;
-            }
         }
     }
 `

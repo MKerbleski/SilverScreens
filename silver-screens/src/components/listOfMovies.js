@@ -35,24 +35,24 @@ class ListOfMovies extends Component {
 
     render(){
         if(this.props.store.update){
-            // console.log("update REQUIRED")
             this.getList()
         }
-        console.log(this.props)
         if(this.props.match.url === 'search/'){
             console.log("REDIRECt")
             return <Redirect to='/' />
         }
         return(
             <ListOfMoviesDiv>                
+                <Nav />
                 <div className="movies">
-                {this.props.store.movieList ? 
-                    this.props.store.movieList.map(movie => {
-                        return <MovieSmall key={movie.id} movie={movie} />
-                    }) : <h1>loading...</h1>}
+                    {this.props.store.movieList ? 
+                        this.props.store.movieList.map(movie => {
+                            return <MovieSmall key={movie.id} movie={movie} />
+                        }) : <h1>loading...</h1>}
                 </div>
-                {this.props.store.movieList && this.props.store.movieList.length === 0 ? 
-                    <h4>No Movies found</h4> : null} 
+                {this.props.store.movieList && 
+                    this.props.store.movieList.length === 0 ? 
+                        <h4>No Movies found</h4> : null} 
                 <Nav />
             </ListOfMoviesDiv>
         )

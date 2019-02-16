@@ -50,7 +50,7 @@ class MovieLarge extends Component {
                     </MoviesLargeDiv>
         )
     } else {
-        return <h1>oops</h1>
+        return <h1>Loading</h1>
     }
     }
 }
