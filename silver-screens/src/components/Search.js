@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchList, requireUpdate } from '../actions'
 import { Link } from "react-router-dom";
 import { Redirect } from 'react-router-dom';
+import LetterBoxString from './LetterBoxString';
 
 class SearchBar extends Component {
     constructor(props){
@@ -39,7 +40,7 @@ class SearchBar extends Component {
         if(this.state.check){
         }
         return(
-            <SearchBarDiv>
+            <SearchBarDiv className='line'>
                 <input 
                     placeholder="search here"
                     name="searchInput" 
@@ -49,13 +50,12 @@ class SearchBar extends Component {
                             [e.target.name]: e.target.value
                         })}
                     >{this.value}</input>
-                <Link 
-                    to={this.state.searchInput.length > 0 ? `/search/${this.state.searchInput}` : '/'} 
-                    onClick={(e) =>      
-                        this.inputHandler(e)
-                        // this.props.requireUpdate()
-                        }>Search</Link>
-                <Link to="/">Clear</Link>
+                    <LetterBoxString 
+                        word='Search'
+                        url={this.state.searchInput.length > 0 ? `/search/${this.state.searchInput}` : '/'} />
+                    <LetterBoxString 
+                        word='Clear'
+                        url='/' />
             </SearchBarDiv>
         )
     }

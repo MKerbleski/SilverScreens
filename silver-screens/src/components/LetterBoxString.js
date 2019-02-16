@@ -7,7 +7,7 @@ import {
     requireUpdate
 } from '../actions'
 
-class LetterBox extends Component {
+class LetterBoxString extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -26,30 +26,22 @@ class LetterBox extends Component {
             htmlString += next
         }
         htmlString+='</span>'
-        // console.log(htmlString)
         return htmlString
     }
 
     render(){
-        console.log(this.props)
         return(
-            <LetterBoxDiv 
-                catagory={this.props.catagory}
-                selectedCatagory={this.props.selectedCatagory}
+            <LetterBoxStringDiv 
+                className='line'
+                highlight={this.props.highlight}
+                // catagory={this.props.catagory}
+                // selectedCatagory={this.props.selectedCatagory}
                 onClick={(e) => this.clickHandler(e)}> 
-                    <Link  
-                        // style={{background: this.props.selectedCatagory === this.props.catagory.url ? 'yellow': null}} 
-                        catagory={this.props.catagory} 
-                        to={`/sort/${this.props.catagory.url}`}>
-                        {ReactHtmlParser(this.renderLetters(this.props.catagory.name))}
-                    </Link> 
-                    {/* {this.props.catagory.name.split(' ').forEach(word => {
-                        console.log(word)
-                        let htmlString = this.renderLetters(word)
-                        console.log(htmlString)
-                        return <span>{ReactHtmlParser(htmlString)}</span>
-                    })} */}
-            </LetterBoxDiv>
+                    <Link
+                        to={this.props.url}>
+                        {ReactHtmlParser(this.renderLetters(this.props.word))}
+                    </Link>
+            </LetterBoxStringDiv>
         )
     }
 }
@@ -61,20 +53,22 @@ const mapStateToProps = store => {
 const mapDispatchToProps = {
     requireUpdate
 }
-export default connect(mapStateToProps, mapDispatchToProps)(LetterBox);
+export default connect(mapStateToProps, mapDispatchToProps)(LetterBoxString);
 
-const LetterBoxDiv = styled.div`
-    border: 1px solid green;
+const LetterBoxStringDiv = styled.div`
+    /* border: 1px solid green; */
+    background: #FFFFFF;
     background: black;
+    line-height: 25px;
     .word {
         /* background: orange; */
         .letter {
             background: red;
             background: ${(props) => {
-                if(props.catagory.url === props.selectedCatagory){
-                    return 'yellow'
+                if(props.highlight){
+                    return '#FFFF66'
                 } else {
-                    return 'white'
+                    return '#FFFFE0'
                 }
             }};
             margin: 1px;
