@@ -109,5 +109,8 @@ const MovieSmallDiv = styled.div`
         height: auto;
         width: 100%;
         filter: blur(1px);
+        @media (max-width: 1000px){
+            filter: blur(0px);
+        }
     }
 `
