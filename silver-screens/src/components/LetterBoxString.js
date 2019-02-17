@@ -3,9 +3,8 @@ import styled from 'styled-components'
 import { Link } from "react-router-dom";
 import ReactHtmlParser from 'react-html-parser'
 import { connect } from 'react-redux';
-import { 
-    requireUpdate
-} from '../actions'
+
+import { requireUpdate } from '../actions'
 
 class LetterBoxString extends Component {
     constructor(props){
@@ -15,7 +14,7 @@ class LetterBoxString extends Component {
     }
 
     clickHandler(e){
-        console.log('clickHandler')
+        // console.log('clickHandler')
         e.preventDefault();
         this.props.requireUpdate();
     }

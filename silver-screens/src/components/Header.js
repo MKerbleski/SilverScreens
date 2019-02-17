@@ -1,11 +1,9 @@
 import React , { Component } from 'react'
 import styled from 'styled-components'
-
-import Search from './Search'
-import Nav from './Nav'
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
-import LetterBoxString from './LetterBoxString';
+
+import { Nav, Search, LetterBoxString } from './index';
 
 const catagories = [
     {'url':'now_playing',

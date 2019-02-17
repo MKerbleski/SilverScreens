@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
-
 import { Route, withRouter } from "react-router-dom";
-import MovieLarge from './components/MovieLarge'
-import ListOfMovies from './components/listOfMovies'
-import Header from './components/Header'
+
+import { MovieLarge, ListOfMovies, Header } from './components/index';
 
 class App extends Component {
     render() {

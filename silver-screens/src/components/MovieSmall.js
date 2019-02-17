@@ -1,10 +1,11 @@
 import React , { Component } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import { 
     selectMovie
 } from '../actions'
-import { Link } from 'react-router-dom';
 
 class MovieSmall extends Component {
     constructor(props){
@@ -37,8 +38,6 @@ class MovieSmall extends Component {
         )
     }
 }
-
-let backdropHeight = 0;
 
 const mapStateToProps = store => {
     return { store: store };

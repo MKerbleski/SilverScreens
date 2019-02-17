@@ -1,14 +1,10 @@
 import React , { Component } from 'react'
 import styled from 'styled-components'
-import Nav from './Nav'
-import Search from './Search'
-import MovieSmall from './MovieSmall'
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { 
-    // changeCatagory, 
-    fetchList,
-} from '../actions'
+
+import { fetchList } from '../actions'
+import { Nav, MovieSmall } from './index';
 
 class ListOfMovies extends Component {
     componentDidMount(){

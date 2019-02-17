@@ -1,12 +1,9 @@
 import React , { Component } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux';
-import { fetchList, requireUpdate } from '../actions'
-import { Link } from "react-router-dom";
-import { Redirect } from 'react-router-dom';
-import LetterBoxString from './LetterBoxString';
 
-let magGlass = '&#128269';
+import { fetchList, requireUpdate } from '../actions'
+import { LetterBoxString } from './index';
 
 class SearchBar extends Component {
     constructor(props){

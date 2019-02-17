@@ -1,12 +1,12 @@
 import React , { Component } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux';
+
 import { 
     getMovieDetails,
     clearMovieDetails    
 } from '../actions'
 
-import { Link } from 'react-router-dom';
 
 class MovieLarge extends Component {
     constructor(props){

@@ -1,17 +1,19 @@
 import React , { Component } from 'react'
 import styled from 'styled-components'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+
 import { changePage } from '../actions'
-import LetterBoxString from './LetterBoxString';
+import { LetterBoxString } from './index';
 
 class Nav extends Component {
     constructor(props){
         super(props)
     }
+
     navigate(cat, page){
-        console.log(this)
         this.props.changePage(cat, page)
     }
+    
     render(){
         const { pageNum, catagory, totalPages } = this.props.store
         return(
