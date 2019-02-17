@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { Redirect } from 'react-router-dom';
 import LetterBoxString from './LetterBoxString';
 
+let magGlass = '&#128269';
+
 class SearchBar extends Component {
     constructor(props){
         super(props)
@@ -37,11 +39,12 @@ class SearchBar extends Component {
     }
 
     render(){
+        console.log(this.state.active)
         if(this.state.check){
         }
         return(
             <SearchBarDiv>
-                <input 
+                {this.state.active ? <><input 
                     placeholder="search here"
                     name="searchInput" 
                     value={this.state.searchInput}
@@ -51,11 +54,18 @@ class SearchBar extends Component {
                         })}
                     >{this.value}</input>
                 <LetterBoxString 
-                    word='Search'
-                    url={this.state.searchInput.length > 0 ? `/search/${this.state.searchInput}` : '/'} />
-                <LetterBoxString 
                     word='Clear'
                     url='/' />
+                <LetterBoxString 
+                    word='Search'
+                    url={this.state.searchInput.length > 0 ? `/search/${this.state.searchInput}` : '/'} /> </> : null
+                    }
+                    <div onClick={() => {
+                        this.setState({active: !this.state.active})
+                    }}>
+                    <LetterBoxString
+                        mag />
+                    </div>
             </SearchBarDiv>
         )
     }

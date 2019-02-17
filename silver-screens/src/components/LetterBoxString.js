@@ -21,6 +21,7 @@ class LetterBoxString extends Component {
     }
 
     renderLetters(string){
+        console.log(string)
         let htmlString = '<span class="word">';
         for (let i = 0; i < string.length; i++){
             let next = `<span class="letter">${string[i]}</span>`
@@ -37,19 +38,20 @@ class LetterBoxString extends Component {
                 highlight={this.props.highlight}
                 onClick={this.props.url ? (e) => this.clickHandler(e) : null}
                 > 
+                    {this.props.mag ? <span className='word'><span className='letter'><i class="fas fa-search"></i></span></span> : null}
                     {this.props.url ?
                         <Link
                             to={this.props.url}>
-                        {ReactHtmlParser(this.renderLetters(this.props.word))}
-                    </Link> : null}
+                            {ReactHtmlParser(this.renderLetters(this.props.word))}
+                        </Link> : null}
                     {this.props.static ?
                         <span>
-                        {ReactHtmlParser(this.renderLetters(this.props.word))}
-                    </span> : null}
+                            {ReactHtmlParser(this.renderLetters(this.props.word))}
+                        </span> : null}
                     {this.props.catagory ? 
                         <span onClick={() => this.props.navigate(this.props.catagory, this.props.pageNum)}>
-                        {ReactHtmlParser(this.renderLetters(this.props.word))}
-                    </span>: null}
+                            {ReactHtmlParser(this.renderLetters(this.props.word))}
+                        </span>: null}
             </LetterBoxStringDiv>
         )
     }
@@ -76,7 +78,7 @@ const LetterBoxStringDiv = styled.div`
         /* border: 1px solid green; */
         /* border-bottom: 1px solid black; */
         /* border-top: 1px solid black; */
-        font-family: 'Staatliches';
+        font-family: 'Staatliches', Arial, Helvetica, sans-serif;
         /* margin-left: 10px; */
         margin-right: 15px;
         /* display: flex; */
