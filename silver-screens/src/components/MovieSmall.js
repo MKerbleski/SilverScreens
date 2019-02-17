@@ -27,10 +27,12 @@ class MovieSmall extends Component {
                 className='preview' 
                 onClick={() => this.selector(movie.id)}
                 id={movie.id}> 
+                {movie.backdrop_path ?
                     <img 
-                        src={movie.backdrop_path ?`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}` : `https://image.tmdb.org/t/p/w500/${movie.poster_path}`} 
+                        src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} 
                         alt={`${movie.original_title} poster`} />
-                    <strong>{movie.original_title}</strong>
+                     : null}
+                     <strong>{movie.original_title}</strong>
             </MovieSmallDiv>
         )
     }
@@ -59,9 +61,9 @@ const MovieSmallDiv = styled.div`
     color: white;
     margin: 1px;
     /* height: auto; */
-    max-height: 250px;
-    min-height: 200px;
-    max-width: 500px;
+    /* max-height: 250px; */
+    /* min-height: 200px; */
+    /* max-width: 500px; */
     overflow: hidden;
     @media(min-width: 500px){
         width: 49.5%;

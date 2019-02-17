@@ -52,7 +52,9 @@ class ListOfMovies extends Component {
                 {this.props.store.movieList && 
                     this.props.store.movieList.length === 0 ? 
                         <h4>No Movies found</h4> : null} 
-                <Nav />
+                <div className="line">
+                    <Nav />
+                </div>
             </ListOfMoviesDiv>
         )
     }
@@ -87,6 +89,31 @@ const ListOfMoviesDiv = styled.div`
         width: 100%;
         @media (max-width: 500px) {
             /* max-width: 49%; */
+        }
+    }
+    .line {
+        /* REPEAT */
+        /* text-decoration: none; */
+        width: 100%;
+        /* border: 1px solid green; */
+        /* border-bottom: 1px solid black; */
+        border-top: 1px solid black;
+        /* font-family: 'Staatliches'; */
+        /* word-spacing: 10px; */
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: white;
+        /* background: green; */
+        h1 {
+            font-size: 5vw;
+            font-family: marqueeregular, Arial, Helvetica, sans-serif;
+            color: black;
+            background: white;
+            width: 100%;
+            margin: 0;
         }
     }
 `

@@ -16,15 +16,18 @@ class Nav extends Component {
         const { pageNum, catagory, totalPages } = this.props.store
         return(
             <NavDiv> 
-                {pageNum === 1 ? <LetterBoxString /> :
-                    <LetterBoxString 
-                        word='Previous'
-                        pageNum={pageNum-1}
-                        catagory={catagory}
-                        navigate={this.props.changePage}
-                         />
+                {pageNum === 1 ? <span className="lineItem"/> :
+                    <span className="lineItem">
+                        <LetterBoxString 
+                            className="lineItem"
+                            word='Previous'
+                            pageNum={pageNum-1}
+                            catagory={catagory}
+                            navigate={this.props.changePage}
+                            />
+                    </span>
                    }
-                   <span>
+                   <span className="lineItem">
                         <LetterBoxString 
                             static
                             word={`page:`} />
@@ -39,13 +42,17 @@ class Nav extends Component {
                             word={`${totalPages}`} />
                    </span>
                 {/* <span>page: {pageNum} of {totalPages}</span>  */}
-                {totalPages === pageNum ? <LetterBoxString /> :
+                {totalPages === pageNum ? <span  className="lineItem"/> :
+                <span className="lineItem">
+
                     <LetterBoxString 
+                        className="lineItem"
                         word='Next'
                         pageNum={pageNum+1}
                         catagory={catagory}
                         navigate={this.props.changePage}
-                         />}
+                         />
+                </span>}
             </NavDiv>
         )
     }
@@ -69,14 +76,19 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps, mapDispatchToProps)(Nav)
 
 const NavDiv = styled.div`
-    border: 1px solid red;
+    /* border: 1px solid red; */
     color: black;
     /* padding: 10px; */
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     span {
         display: flex;
         flex-direction: row;
+    }
+    .lineItem{
+        display: flex;
+        justify-content: center;
+        width: 100%;
     }
 `

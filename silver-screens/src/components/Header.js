@@ -4,10 +4,6 @@ import styled from 'styled-components'
 import Search from './Search'
 import Nav from './Nav'
 import { connect } from 'react-redux';
-
-// import { 
-//     requireUpdate
-// } from '../actions'
 import { Link } from "react-router-dom";
 import LetterBoxString from './LetterBoxString';
 
@@ -21,13 +17,6 @@ const catagories = [
 ]
 
 class Header extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-
-        }
-    }
-
     render(){
         return(
             <HeaderDiv> 
@@ -35,27 +24,33 @@ class Header extends Component {
                     <h1>Silver Screens</h1>
                 </Link> 
                 {this.props.store.movieDetails ? 
-                    <Link className="line" to='/'>back</Link> :
-                        <>{catagories.map(catagory => {
-                            return <div className="line">
-                            {catagory.name.split(' ').map(word => {
-                                return <LetterBoxString
-                                        highlight={this.props.store.catagory === catagory.url}
-                                        key={word} 
-                                        word={word}
-                                        url={`/sort/${catagory.url}`}
-                                        />
-                            })}
-                            
-                            </div>
-                        })}</>
+                    <div className="line">
+                        <LetterBoxString 
+                            word="Back"
+                            url='/' />
+                    </div> :
+                    <>
+                        {catagories.map(catagory => {
+                            return (
+                                <div className="line">
+                                    {catagory.name.split(' ').map(word => {
+                                        return <LetterBoxString
+                                                    highlight={this.props.store.catagory === catagory.url}
+                                                    key={word} 
+                                                    word={word}
+                                                    url={`/sort/${catagory.url}`} />
+                                    })}
+                                </div>)
+                            })
+                        }
+                        <div className="line">
+                            <Search />
+                        </div>
+                        <div className="line">
+                            <Nav />
+                        </div>
+                    </>
                 }
-                <div className="line">
-                    <Search />
-                </div>
-                <div className="line">
-                    <Nav />
-                </div>
             </HeaderDiv>
         )
     }
@@ -64,10 +59,6 @@ class Header extends Component {
 const mapStateToProps = store => {
     return { store: store };
 }
-
-// const mapDispatchToProps = {
-//     requireUpdate
-// }
 
 export default connect(mapStateToProps)(Header);
 
@@ -83,6 +74,8 @@ const HeaderDiv = styled.header`
         background: green;
     }
     .line {
+        /* REPEAT */
+
         /* text-decoration: none; */
         width: 100%;
         /* border: 1px solid green; */
