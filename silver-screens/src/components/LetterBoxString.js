@@ -70,7 +70,7 @@ const LetterBoxStringDiv = styled.div`
         font-family: 'Staatliches';
         /* margin-left: 10px; */
         margin-right: 15px;
-        display: flex;
+        /* display: flex; */
         justify-content: center;
         align-items: center;
         text-align: center;

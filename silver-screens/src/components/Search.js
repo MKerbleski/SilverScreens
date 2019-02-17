@@ -73,11 +73,12 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)
 
 const SearchBarDiv = styled.div`
-    /* border: 1px solid red;
+    border: 1px solid red;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
-    justify-content: space-between; */
+    justify-content: flex-end;
+    width: 100%;
     .lineItem {
         border: 1px solid green;
         margin: 0;

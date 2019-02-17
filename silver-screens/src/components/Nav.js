@@ -32,8 +32,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(Nav)
 
 const NavDiv = styled.div`
     border: 1px solid red;
-    color: white;
-    padding: 10px;
+    color: black;
+    /* padding: 10px; */
     width: 100%;
     display: flex;
     justify-content: space-evenly;

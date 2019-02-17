@@ -2,6 +2,7 @@ import React , { Component } from 'react'
 import styled from 'styled-components'
 
 import Search from './Search'
+import Nav from './Nav'
 import { connect } from 'react-redux';
 
 // import { 
@@ -30,7 +31,9 @@ class Header extends Component {
     render(){
         return(
             <HeaderDiv> 
-                <Link to='/' className="line"><h1>Silver Screens</h1></Link> 
+                <Link to='/' className="line">
+                    <h1>Silver Screens</h1>
+                </Link> 
                 {this.props.store.movieDetails ? 
                     <Link className="line" to='/'>back</Link> :
                         <>{catagories.map(catagory => {
@@ -47,7 +50,12 @@ class Header extends Component {
                             </div>
                         })}</>
                 }
-                <Search className="hey" />
+                <div className="line">
+                    <Search />
+                </div>
+                <div className="line">
+                    <Nav />
+                </div>
             </HeaderDiv>
         )
     }
@@ -88,7 +96,7 @@ const HeaderDiv = styled.header`
         justify-content: center;
         text-align: center;
         background: white;
-        background: green;
+        /* background: green; */
         h1 {
             font-size: 5vw;
             font-family: marqueeregular, Arial, Helvetica, sans-serif;

@@ -38,12 +38,11 @@ class ListOfMovies extends Component {
             this.getList()
         }
         if(this.props.match.url === 'search/'){
-            console.log("REDIRECt")
+            console.log("REDIRECT")
             return <Redirect to='/' />
         }
         return(
             <ListOfMoviesDiv>                
-                <Nav />
                 <div className="movies">
                     {this.props.store.movieList ? 
                         this.props.store.movieList.map(movie => {
