@@ -5,7 +5,7 @@ import {
     getMovieDetails,
     clearMovieDetails    
 } from '../actions'
-// import axios from 'axios'
+
 import { Link } from 'react-router-dom';
 
 class MovieLarge extends Component {
@@ -26,12 +26,10 @@ class MovieLarge extends Component {
     }
 
     render(){
-        console.log(this.props.store)
         const  movie  = this.props.store.movieDetails
         if(movie){
                 return (
-                    <MoviesLargeDiv id={movie.id}> 
-                        <Link to="/">Back</Link>
+                    <MoviesLargeDiv id={movie.id}>
                         <div className="details">
                             <div>
                                 <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={`${movie.original_title} poster`} />   
@@ -67,7 +65,7 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps, mapDispatchToProps)(MovieLarge)
 
 const MoviesLargeDiv = styled.div`
-    border: 1px solid red;
+    /* border: 1px solid red; */
     /* min-width: 300px; */
     display: flex;
     flex-direction: column;

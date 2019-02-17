@@ -28,7 +28,6 @@ export const changePage = (catagory, pageNum=1) => {
 export const fetchList = (catagory, pageNum=1, searchInput=null) => {
     return function(dispatch){
         dispatch({type: LIST_REQUESTED, payload: catagory})
-        console.log(catagory)
         if(catagory === 'search'){
             if(searchInput===''){
                 catagory = 'now_playing'
@@ -38,7 +37,7 @@ export const fetchList = (catagory, pageNum=1, searchInput=null) => {
             }
         }
         if (catagory === 'search'){
-            //This section of code was done to get around a CORS issue, still need to research why axios will not work in this specific situation
+            //This section of code was done like this to get around a CORS issue, still need to research why axios will not work in this specific situation
             var data = "{}";
             var xhr = new XMLHttpRequest();
             xhr.withCredentials = false;

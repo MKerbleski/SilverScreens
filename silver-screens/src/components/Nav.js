@@ -16,7 +16,8 @@ class Nav extends Component {
         const { pageNum, catagory, totalPages } = this.props.store
         return(
             <NavDiv> 
-                {pageNum === 1 ? <span className="lineItem"/> :
+                {pageNum === 1 ?
+                    <span className="lineItem"/> :
                     <span className="lineItem">
                         <LetterBoxString 
                             className="lineItem"
@@ -26,44 +27,36 @@ class Nav extends Component {
                             navigate={this.props.changePage}
                             />
                     </span>
-                   }
-                   <span className="lineItem">
-                        <LetterBoxString 
-                            static
-                            word={`page:`} />
-                        <LetterBoxString 
-                        static
-                            word={`${pageNum}`} />
-                        <LetterBoxString 
-                        static
-                            word={`of`} />
-                        <LetterBoxString 
-                        static
-                            word={`${totalPages}`} />
-                   </span>
-                {/* <span>page: {pageNum} of {totalPages}</span>  */}
-                {totalPages === pageNum ? <span  className="lineItem"/> :
+                }
                 <span className="lineItem">
-
                     <LetterBoxString 
-                        className="lineItem"
-                        word='Next'
-                        pageNum={pageNum+1}
-                        catagory={catagory}
-                        navigate={this.props.changePage}
-                         />
-                </span>}
+                        static
+                        word={`page:`} />
+                    <LetterBoxString 
+                        static
+                        word={`${pageNum}`} />
+                    <LetterBoxString 
+                        static
+                        word={`of`} />
+                    <LetterBoxString 
+                        static
+                        word={`${totalPages}`} />
+                </span>
+                {totalPages === pageNum ?
+                    <span  className="lineItem"/> :
+                    <span className="lineItem">
+                        <LetterBoxString 
+                            className="lineItem"
+                            word='Next'
+                            pageNum={pageNum+1}
+                            catagory={catagory}
+                            navigate={this.props.changePage}
+                            />
+                    </span>}
             </NavDiv>
         )
     }
 }
-
-{/* <button onClick={() => {
-    this.props.changePage(catagory, pageNum-1)}}>Prev</button> */}
-
-// {totalPages === pageNum ? <div></div> :
-//     <button onClick={() => {
-//        this.props.changePage(catagory, pageNum+1)}}>Next</button>}
 
 const mapStateToProps = store => {
     return { store: store };
@@ -78,7 +71,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(Nav)
 const NavDiv = styled.div`
     /* border: 1px solid red; */
     color: black;
-    /* padding: 10px; */
     width: 100%;
     display: flex;
     justify-content: space-around;

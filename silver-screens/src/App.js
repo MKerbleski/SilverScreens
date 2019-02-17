@@ -9,23 +9,33 @@ import Header from './components/Header'
 class App extends Component {
     render() {
         return (
-          <AppDiv>
-             <Header />
-              <Route
-                  path="/" 
-                  exact
-                  component={ListOfMovies} />
-              <Route
-                  path="/sort/:catagory" 
-                  component={ListOfMovies} />
-              <Route
-                  path={`/movie/:id`} 
-                  component={MovieLarge} />
-              <Route
-                  path={`/search/:params`} 
-                  component={ListOfMovies} />
-          </AppDiv>
-        );
+            <AppDiv>
+                <Header />
+                <Route
+                    path="/" 
+                    exact
+                    component={ListOfMovies} />
+                <Route
+                    path="/sort/:catagory" 
+                    component={ListOfMovies} />
+                <Route
+                    path={`/movie/:id`} 
+                    component={MovieLarge} />
+                <Route
+                    path={`/search/:params`} 
+                    component={ListOfMovies} />
+                <footer>
+                    Made by: 
+                    <a href="http://mikerble.ski">
+                        Mike
+                    </a>
+                    Movies API: 
+                    <a href="https://www.themoviedb.org/">
+                        The Movie DB
+                    </a>
+                </footer>
+            </AppDiv>
+        )
     }
 }
 

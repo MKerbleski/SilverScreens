@@ -99,11 +99,12 @@ const LetterBoxStringDiv = styled.div`
                     return '#FFFFE0'
                 }
             }};
-            margin: 1px;
+            /* margin: 1px; */
             padding: 2px;
             color: black;
             border: 1px solid gray;
             bottom: 1px;
+            height: 25px;
         }
 }
 `
