@@ -54,6 +54,7 @@ export const reducer = (state=initialState, action) => {
                 update: false,
             })
         case LIST_RECIEVED: 
+        console.log(action.payload)
             return Object.assign({}, state, {
                 listRequested: false,
                 movieList: action.payload.results,

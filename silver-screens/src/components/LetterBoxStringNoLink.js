@@ -15,7 +15,6 @@ class LetterBoxString extends Component {
     }
 
     clickHandler(e){
-        console.log('clickHandler')
         e.preventDefault();
         this.props.requireUpdate();
     }
@@ -35,21 +34,13 @@ class LetterBoxString extends Component {
             <LetterBoxStringDiv 
                 className='word'
                 highlight={this.props.highlight}
-                onClick={this.props.url ? (e) => this.clickHandler(e) : null}
-                > 
-                    {this.props.url ?
-                        <Link
-                            to={this.props.url}>
+                // catagory={this.props.catagory}
+                // selectedCatagory={this.props.selectedCatagory}
+                onClick={(e) => this.clickHandler(e)}> 
+                    <Link
+                        to={this.props.url}>
                         {ReactHtmlParser(this.renderLetters(this.props.word))}
-                    </Link> : null}
-                    {this.props.static ?
-                        <span>
-                        {ReactHtmlParser(this.renderLetters(this.props.word))}
-                    </span> : null}
-                    {this.props.catagory ? 
-                        <span onClick={() => this.props.navigate(this.props.catagory, this.props.pageNum)}>
-                        {ReactHtmlParser(this.renderLetters(this.props.word))}
-                    </span>: null}
+                    </Link>
             </LetterBoxStringDiv>
         )
     }

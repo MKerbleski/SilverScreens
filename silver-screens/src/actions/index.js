@@ -11,6 +11,7 @@ export const CLEAR_DETAILS = 'CLEAR_DETAILS';
 export const REQUIRE_UPDATE = 'REQUIRE_UPDATE';
 
 export const changePage = (catagory, pageNum=1) => {
+    console.log(catagory, pageNum)
     return function(dispatch){
         dispatch({type: CHANGE_PAGE, pageNum: pageNum});
         dispatch(fetchList(catagory, pageNum))
