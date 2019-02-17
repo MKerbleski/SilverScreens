@@ -44,8 +44,8 @@ class App extends Component {
 export default withRouter(App)
 
 const AppDiv = styled.div`
-    /* border: 0.1px solid red; */
-    max-width: 100%;
+    border: 1px solid red;
+    width: 100%;
     box-sizing: border-box;
     background: #711324;
     display: flex;
@@ -53,6 +53,6 @@ const AppDiv = styled.div`
     justify-content: flex-start;
     align-items: center;
     height: auto;
-    margin: 0;
     padding: 0;
+    max-width: 2000px;
 `

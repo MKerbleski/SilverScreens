@@ -14,34 +14,20 @@ class SearchBar extends Component {
         this.state = {
             searchInput: '',
             active: false,
-            check: false,
+            // check: false,
         }
     }
 
     inputHandler(e){
-        console.log("hi")
-
-        if(this.state.searchInput.length > 0){
-            console.log("query")
+        if(e === 'clear'){
+            this.setState({
+                searchInput: '',
+            })
         }
         this.props.requireUpdate()
-
-        // this.setState({check: true})
-        // e.preventDefault()
-        // if(e.target.name ==='search'){
-        //     this.props.fetchList('search', 1, this.state.searchInput)
-        // } else {
-        //     this.setState({
-        //         [e.target.name]: e.target.value
-        //     })
-        // }
-        // return <Redirect to='/' />
     }
 
     render(){
-        console.log(this.state.active)
-        if(this.state.check){
-        }
         return(
             <SearchBarDiv>
                 {this.state.active ? 
@@ -58,9 +44,14 @@ class SearchBar extends Component {
                     <LetterBoxString 
                         word='Search'
                         url={this.state.searchInput.length > 0 ? `/search/${this.state.searchInput}` : '/'} />
-                    <LetterBoxString 
-                        word='Clear'
-                        url='/' />
+                    <div 
+                        name="clear"
+                        onClick={(e) => this.inputHandler('clear')}>
+                        <LetterBoxString 
+                            word='Clear'
+                            function={this.inputHandler}
+                            url='/' />
+                    </div>
                 </> : null}
                 <div onClick={() => {
                     this.setState({active: !this.state.active}) }}>
