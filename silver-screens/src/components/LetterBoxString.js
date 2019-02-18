@@ -35,7 +35,7 @@ class LetterBoxString extends Component {
                 className='word'
                 highlight={this.props.highlight}
                 onClick={this.props.url ? (e) => this.clickHandler(e) : null}> 
-                {this.props.icon 
+                {this.props.justIcon 
                     ?   <span className='word'>
                             <span className='letter'>
                                 <i className={this.props.fontA}></i>
@@ -45,7 +45,13 @@ class LetterBoxString extends Component {
                 {this.props.url 
                     ?   <Link
                             to={this.props.url}>
-                            {ReactHtmlParser(this.renderLetters(this.props.word))}
+                            {this.props.icon 
+                            ?   <span className='word'>
+                                    <span className='letter'>
+                                        <i className={this.props.fontA}></i>
+                                    </span>
+                                </span>
+                            : ReactHtmlParser(this.renderLetters(this.props.word))}
                         </Link> 
                     :   null}
                 {this.props.static 
@@ -56,7 +62,13 @@ class LetterBoxString extends Component {
                 {this.props.catagory 
                     ?   <span  
                             onClick={() => this.props.navigate(this.props.catagory, this.props.pageNum)}>
-                            {ReactHtmlParser(this.renderLetters(this.props.word))}
+                            {this.props.icon 
+                            ?   <span className='word'>
+                                    <span className='letter'>
+                                        <i className={this.props.fontA}></i>
+                                    </span>
+                                </span>
+                            : ReactHtmlParser(this.renderLetters(this.props.word))}
                         </span>
                     : null}
             </LetterBoxStringDiv>

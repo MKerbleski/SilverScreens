@@ -33,12 +33,12 @@ class App extends Component {
                     :   <div className="bottomNav">
                             <Nav />
                         </div>}
-                <footer> 
+                <footer className="bottomNav"> 
                     <div className="left">
                         <a  rel="noopener noreferrer"
                             target="_blank" 
                             href="https://github.com/MKerbleski/SilverScreens">
-                            <LetterBoxString icon fontA="fab fa-github" />
+                            <LetterBoxString justIcon fontA="fab fa-github" />
                         </a>
                         <a href="http://mikerble.ski">
                             {/* <LetterBoxString static word="Made" />

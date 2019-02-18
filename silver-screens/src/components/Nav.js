@@ -23,6 +23,7 @@ class Nav extends Component {
                             <LetterBoxString 
                                 className="lineItem"
                                 word='Prev'
+                                icon fontA="fas fa-arrow-left"
                                 pageNum={pageNum-1}
                                 catagory={catagory}
                                 navigate={this.props.changePage}
@@ -46,6 +47,9 @@ class Nav extends Component {
                     <span className="lineItem smallNum">
                         <LetterBoxString 
                             static
+                            word={`page:`} />
+                        <LetterBoxString 
+                            static
                             word={`${pageNum}`} />
                     </span>
                     {totalPages === pageNum ?
@@ -54,6 +58,7 @@ class Nav extends Component {
                             <LetterBoxString 
                                 className="lineItem"
                                 word='Next'
+                                icon fontA="fas fa-arrow-right"
                                 pageNum={pageNum+1}
                                 catagory={catagory}
                                 navigate={this.props.changePage}

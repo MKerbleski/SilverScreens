@@ -30,8 +30,8 @@ class SearchBar extends Component {
     render(){
         return(
             <SearchBarDiv>
-                {this.state.active 
-                    ?   <>  
+                {/* {this.state.active 
+                    ?   <>   */}
                             <input 
                                 placeholder="search here"
                                 name="searchInput" 
@@ -39,21 +39,22 @@ class SearchBar extends Component {
                                 onChange={(e) => this.inputHandler(e)}
                                 >{this.value}</input>
                             <LetterBoxString 
-                                word='Search'
+                                // word='Search'
+                                icon fontA="fas fa-search"
                                 url={this.state.searchInput.length > 0 ? `/search/${this.state.searchInput}` : '/'} />
                             <div 
                                 name="clear"
                                 onClick={(e) => this.inputHandler('clear')}>
                                 <LetterBoxString 
-                                    word='Clear'
+                                    word='X'
                                     function={this.inputHandler}
                                     url='/' />
                             </div>
-                        </> 
-                    :   null}
-                <div onClick={() => this.setState({active: !this.state.active})}>
+                        {/* </> 
+                    :   null} */}
+                {/* <div onClick={() => this.setState({active: !this.state.active})}>
                     <LetterBoxString icon fontA="fas fa-search" />
-                </div>
+                </div> */}
             </SearchBarDiv>
         )
     }
@@ -74,8 +75,8 @@ const SearchBarDiv = styled.div`
     /* border: 1px solid red; */
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     .lineItem {
         border: 1px solid green;
