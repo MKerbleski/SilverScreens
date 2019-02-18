@@ -22,34 +22,36 @@ class Header extends Component {
                 <Link to='/'>
                     <h1>Silver Screens</h1>
                 </Link> 
-                {this.props.store.movieDetails ? 
-                    <div className="line">
-                        <LetterBoxString 
-                            word="Back"
-                            url='/' />
-                    </div> :
-                    <>
-                        {catagories.map(catagory => {
-                            return (
-                                <div key={catagory.url} className="line">
-                                    {catagory.name.split(' ').map(word => {
-                                        return <LetterBoxString
-                                                    highlight={this.props.store.catagory === catagory.url}
-                                                    key={word} 
-                                                    word={word}
-                                                    url={`/sort/${catagory.url}`} />
-                                    })}
-                                </div>)
-                            })
-                        }
+                <div className="marquee">
+                    {this.props.store.movieDetails ? 
                         <div className="line">
-                            <Search />
-                        </div>
-                        <div className="line">
-                            <Nav />
-                        </div>
-                    </>
-                }
+                            <LetterBoxString 
+                                word="Back"
+                                url='/' />
+                        </div> :
+                        <>
+                            {catagories.map(catagory => {
+                                return (
+                                    <div key={catagory.url} className="line">
+                                        {catagory.name.split(' ').map(word => {
+                                            return <LetterBoxString
+                                                        highlight={this.props.store.catagory === catagory.url}
+                                                        key={word} 
+                                                        word={word}
+                                                        url={`/sort/${catagory.url}`} />
+                                        })}
+                                    </div>)
+                                })
+                            }
+                            <div className="line">
+                                <Search />
+                            </div>
+                            <div className="line">
+                                <Nav />
+                            </div>
+                        </>
+                    }
+                </div>
             </HeaderDiv>
         )
     }
@@ -62,11 +64,18 @@ const mapStateToProps = store => {
 export default connect(mapStateToProps)(Header);
 
 const HeaderDiv = styled.header`
-    /* border: 1px solid green; */
+    border: 1px solid green;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    .marquee {
+        border: 1px solid red;
+        width: 80%;
+        border: 5px dashed yellow;
+        padding: 5px;
+        margin: 5px;
+    }
     .line {
         /* REPEAT */
         ${line()}
