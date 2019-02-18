@@ -35,10 +35,10 @@ class LetterBoxString extends Component {
                 className='word'
                 highlight={this.props.highlight}
                 onClick={this.props.url ? (e) => this.clickHandler(e) : null}> 
-                {this.props.mag 
+                {this.props.icon 
                     ?   <span className='word'>
                             <span className='letter'>
-                                <i class="fas fa-search"></i>
+                                <i className={this.props.fontA}></i>
                             </span>
                         </span> 
                     :   null}

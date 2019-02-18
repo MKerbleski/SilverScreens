@@ -17,7 +17,7 @@ class MovieLarge extends Component {
     }
 
     componentDidMount(){
-        console.log("CDM", this.props)
+        // console.log("CDM", this.props)
         this.props.getMovieDetails(this.props.match.params.id)
     }
 
@@ -27,6 +27,7 @@ class MovieLarge extends Component {
 
     render(){
         const  movie  = this.props.store.movieDetails
+        console.log(movie)
         if(movie){
             return (
                 <MoviesLargeDiv id={movie.id}>
@@ -34,10 +35,34 @@ class MovieLarge extends Component {
                         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} 
                         alt={`${movie.original_title} poster`} />   
                     <div className="words">
-                        <h1><strong>{movie.original_title}</strong></h1>
-                        <p>Total Votes: {movie.vote_count}</p>
-                        <p>Vote Average: {movie.vote_average}</p>
-                        <p>Language: {movie.original_language}</p>
+                        <div className="top">
+                            <div className="topLeft">
+                                <h1>
+                                    <strong>{movie.original_title} </strong>{movie.imdb_id 
+                                        ?   <a  rel="noopener noreferrer"
+                                                target="_blank" 
+                                                href={`https://www.imdb.com/showtimes/title/${movie.imdb_id}`}>
+                                                <i class="fab fa-imdb"></i>
+                                            </a> 
+                                        : null} 
+                                </h1>
+                                {movie.adult ? <p>ADULT</p> : null}
+                                <p><strong>Total Votes: </strong>{movie.vote_count}</p>
+                                <p>Genere(s):
+                                    {movie.genres.map(genre => {
+                                        return <span> {genre.name}</span>})}
+                                </p>
+                                
+                                <p>{movie.budget}</p>
+                                <p>Vote Average: {movie.vote_average}</p>
+                                <p>Language: {movie.original_language}</p>
+                            </div>
+                            <div className="topRight">
+                                <img 
+                                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} 
+                                    alt={`${movie.original_title} poster`} />   
+                            </div>
+                        </div>
                         <p>Overview: {movie.overview}</p>
                         <p>Popularity: {movie.popularity}</p>
                         <p>Release Date: {movie.release_date}</p>
@@ -70,15 +95,50 @@ const MoviesLargeDiv = styled.div`
     align-items: flex-start;
     justify-content: flex-start;
     flex-wrap: nowrap;
-    margin: 5px 0;
+    margin: 15px 0;
     height: auto;
     width: 100%;
     box-sizing: border-box;
-    color: white;
+    background: #aa7a87;
+    img {
+        width: 50%;
+        @media(max-width: 1000px){
+            display: none;
+        }
+    }
     .words {
-        border: 1px solid green;
+        color: white;
+        /* border: 1px solid green; */
+        margin: 0 5px;
         padding: 5px;
-        max-width: 500px;
+        /* max-width: 500px; */
+        height: 100%;
+        width: 100%;
+        .top{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .topLeft{
+                width: 50%;
+                @media(min-width: 1000px){
+                    width: 100%;
+                }
+            }
+            .topRight{
+                width: 50%;
+                img {
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    @media(min-width: 1000px){
+                        display: none;
+                    }
+            }
+        }
+        }
+        a {
+            font-size: 40px;
+        }
     }
 
 `

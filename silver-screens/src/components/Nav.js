@@ -6,10 +6,6 @@ import { changePage } from '../actions'
 import { LetterBoxString } from './index';
 
 class Nav extends Component {
-    constructor(props){
-        super(props)
-    }
-
     navigate(cat, page){
         this.props.changePage(cat, page)
     }

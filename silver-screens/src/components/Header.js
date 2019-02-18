@@ -31,7 +31,7 @@ class Header extends Component {
                     <>
                         {catagories.map(catagory => {
                             return (
-                                <div className="line">
+                                <div key={catagory.url} className="line">
                                     {catagory.name.split(' ').map(word => {
                                         return <LetterBoxString
                                                     highlight={this.props.store.catagory === catagory.url}
@@ -63,7 +63,6 @@ export default connect(mapStateToProps)(Header);
 
 const HeaderDiv = styled.header`
     /* border: 1px solid green; */
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,9 +75,9 @@ const HeaderDiv = styled.header`
         text-decoration: none;
     }
     h1 {
-        font-size: 5vw;
+        font-size: 8vw;
         font-family: marqueeregular, Arial, Helvetica, sans-serif;
-        color: black;
+        color: gold;
         /* background: white; */
         width: 100%;
         margin: 0;

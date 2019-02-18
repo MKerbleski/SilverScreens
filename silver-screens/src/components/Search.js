@@ -52,7 +52,7 @@ class SearchBar extends Component {
                 </> : null}
                 <div onClick={() => {
                     this.setState({active: !this.state.active}) }}>
-                <LetterBoxString mag />
+                    <LetterBoxString icon fontA="fas fa-search" />
                 </div>
             </SearchBarDiv>
         )
