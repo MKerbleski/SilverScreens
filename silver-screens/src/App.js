@@ -82,7 +82,7 @@ const AppDiv = styled.div`
         width: 80%;
     }
     footer {
-        ${line()};
+        /* ${line()}; */
         margin-bottom: 3px;
         display: flex;
         flex-direction: row;

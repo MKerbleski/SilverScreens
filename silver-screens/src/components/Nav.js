@@ -33,7 +33,7 @@ class Nav extends Component {
                     <span className="lineItem largeNum">
                         <LetterBoxString 
                             static
-                            word={`page:`} />
+                            word={`page`} />
                         <LetterBoxString 
                             static
                             word={`${pageNum}`} />
@@ -42,15 +42,15 @@ class Nav extends Component {
                             word={`of`} />
                         <LetterBoxString 
                             static
-                            word={`${totalPages}`} />
+                            word={`#${totalPages}`} />
                     </span>
                     <span className="lineItem smallNum">
                         <LetterBoxString 
                             static
-                            word={`page:`} />
+                            word={`page`} />
                         <LetterBoxString 
                             static
-                            word={`${pageNum}`} />
+                            word={`#${pageNum}`} />
                     </span>
                     {totalPages === pageNum ?
                         <span  className="lineItem"/> :

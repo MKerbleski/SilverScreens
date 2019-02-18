@@ -32,9 +32,10 @@ class LetterBoxString extends Component {
     render(){
         return(
             <LetterBoxStringDiv 
-                className='word'
                 highlight={this.props.highlight}
-                onClick={this.props.url ? (e) => this.clickHandler(e) : null}> 
+                onClick={this.props.url 
+                    ? (e) => this.clickHandler(e) 
+                    : null}> 
                 {this.props.justIcon 
                     ?   <span className='word'>
                             <span className='letter'>
@@ -43,15 +44,14 @@ class LetterBoxString extends Component {
                         </span> 
                     :   null}
                 {this.props.url 
-                    ?   <Link
-                            to={this.props.url}>
+                    ?   <Link to={this.props.url}>
                             {this.props.icon 
-                            ?   <span className='word'>
-                                    <span className='letter'>
-                                        <i className={this.props.fontA}></i>
+                                ?   <span className='word'>
+                                        <span className='letter'>
+                                            <i className={this.props.fontA}></i>
+                                        </span>
                                     </span>
-                                </span>
-                            : ReactHtmlParser(this.renderLetters(this.props.word))}
+                                : ReactHtmlParser(this.renderLetters(this.props.word))}
                         </Link> 
                     :   null}
                 {this.props.static 
@@ -63,12 +63,12 @@ class LetterBoxString extends Component {
                     ?   <span  
                             onClick={() => this.props.navigate(this.props.catagory, this.props.pageNum)}>
                             {this.props.icon 
-                            ?   <span className='word'>
-                                    <span className='letter'>
-                                        <i className={this.props.fontA}></i>
+                                ?   <span className='word'>
+                                        <span className='letter'>
+                                            <i className={this.props.fontA}></i>
+                                        </span>
                                     </span>
-                                </span>
-                            : ReactHtmlParser(this.renderLetters(this.props.word))}
+                                : ReactHtmlParser(this.renderLetters(this.props.word))}
                         </span>
                     : null}
             </LetterBoxStringDiv>
@@ -88,37 +88,25 @@ export default connect(mapStateToProps, mapDispatchToProps)(LetterBoxString);
 const LetterBoxStringDiv = styled.div`
     /* border: 1px solid green; */
     background: #FFFFFF;
-    /* background: black; */
-    /* line-height: 25px; */
+    a {
+        text-decoration: none;
+    }
     .word {
-        /* background: orange; */
         text-decoration: none;
         width: 100%;
-        /* border: 1px solid green; */
-        /* border-bottom: 1px solid black; */
-        /* border-top: 1px solid black; */
         font-family: 'Staatliches', Arial, Helvetica, sans-serif;
-        /* margin-left: 10px; */
-        margin-right: 8px;
-        margin-left: 8px;
+        margin: 0 8px;
+        justify-content: center;
+        align-items: center;
+        color: black;
         @media (max-width: 500px) {
             margin-right: 5px;
         }
-        /* display: flex; */
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        color: black;
-        height: auto;
-        :hover{
+        :hover {
             background: orange;
             cursor: pointer;
         }
-        a {
-            text-decoration: none;
-        }
         .letter {
-            background: red;
             background: ${(props) => {
                 if(props.highlight){
                     return '#FFFF66'
@@ -126,12 +114,17 @@ const LetterBoxStringDiv = styled.div`
                     return '#FFFFE0'
                 }
             }};
-            /* margin: 1px; */
             padding: 2px;
             color: black;
             border: 1px solid gray;
-            bottom: 1px;
-            height: 25px;
+            height: 100%;
+            font-size: 5vw;
+            @media (min-width: 500px) {
+                font-size: 4vw;
+            }
+            @media (min-width: 1000px) {
+                font-size: 3vw;
+            }
         }
 }
 `

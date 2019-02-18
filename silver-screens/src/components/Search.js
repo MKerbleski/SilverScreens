@@ -10,7 +10,6 @@ class SearchBar extends Component {
         super(props)
         this.state = {
             searchInput: '',
-            active: false,
         }
     }
 
@@ -30,31 +29,23 @@ class SearchBar extends Component {
     render(){
         return(
             <SearchBarDiv>
-                {/* {this.state.active 
-                    ?   <>   */}
-                            <input 
-                                placeholder="search here"
-                                name="searchInput" 
-                                value={this.state.searchInput}
-                                onChange={(e) => this.inputHandler(e)}
-                                >{this.value}</input>
-                            <LetterBoxString 
-                                // word='Search'
-                                icon fontA="fas fa-search"
-                                url={this.state.searchInput.length > 0 ? `/search/${this.state.searchInput}` : '/'} />
-                            <div 
-                                name="clear"
-                                onClick={(e) => this.inputHandler('clear')}>
-                                <LetterBoxString 
-                                    word='X'
-                                    function={this.inputHandler}
-                                    url='/' />
-                            </div>
-                        {/* </> 
-                    :   null} */}
-                {/* <div onClick={() => this.setState({active: !this.state.active})}>
-                    <LetterBoxString icon fontA="fas fa-search" />
-                </div> */}
+                <input 
+                    placeholder="search here"
+                    name="searchInput" 
+                    value={this.state.searchInput}
+                    onChange={(e) => this.inputHandler(e)}
+                    >{this.value}</input>
+                <LetterBoxString 
+                    icon fontA="fas fa-search"
+                    url={this.state.searchInput.length > 0 ? `/search/${this.state.searchInput}` : '/'} />
+                <div 
+                    name="clear"
+                    onClick={(e) => this.inputHandler('clear')}>
+                    <LetterBoxString 
+                        word='X'
+                        function={this.inputHandler}
+                        url='/' />
+                </div>
             </SearchBarDiv>
         )
     }
@@ -72,7 +63,6 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)
 
 const SearchBarDiv = styled.div`
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -90,6 +80,8 @@ const SearchBarDiv = styled.div`
     }
     input {
         margin: 0;
+        height: 100%;
+        height: 30px;
         font-family: 'Staatliches', Arial, Helvetica, sans-serif;
     }
 
