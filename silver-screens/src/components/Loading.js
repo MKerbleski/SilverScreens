@@ -21,7 +21,7 @@ export default class Loading extends Component {
 }
 
 const LoadingDiv = styled.div`
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
