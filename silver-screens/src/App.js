@@ -41,15 +41,15 @@ class App extends Component {
                             <LetterBoxString icon fontA="fab fa-github" />
                         </a>
                         <a href="http://mikerble.ski">
-                            <LetterBoxString static word="Made" />
-                            <LetterBoxString static word="by:" />
+                            {/* <LetterBoxString static word="Made" />
+                            <LetterBoxString static word="by:" /> */}
                             <LetterBoxString static word="Mike" />
                         </a>
                     </div>
                     <a href="https://www.themoviedb.org/">
-                        <LetterBoxString static word="Movies" />
-                        <LetterBoxString static word="API:" />
-                        <LetterBoxString static word="TheMovieDB" />
+                        {/* <LetterBoxString static word="Movies" /> */}
+                        <LetterBoxString static word="API:TheMovieDB" />
+                        {/* <LetterBoxString static word="TheMovieDB" /> */}
                     </a>
                 </footer>
             </AppDiv>
@@ -99,6 +99,11 @@ const AppDiv = styled.div`
             flex-direction: row;
             justify-content: center;
             align-items: center;
+        }
+        @media (max-width: 500px) {
+            flex-direction: column;
+            /* .left {margin: 5px;} */
+            a{border-top: 1px solid black;}
         }
     }
 `

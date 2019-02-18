@@ -47,7 +47,7 @@ class MovieLarge extends Component {
                                 <p><strong>Release Date: </strong>{movie.release_date}</p>
                                 <p><strong>Budget: </strong>${Number(movie.budget).toLocaleString('en')}</p>
                                 <p><strong>Revenue: </strong>${Number(movie.revenue).toLocaleString('en')}</p>
-                                <p><strong>Total Votes: </strong>{movie.vote_count}</p>
+                                <p><strong>Total Votes: </strong>{Number(movie.vote_count).toLocaleString('en')}</p>
                                 <p><strong>Vote Average: </strong>{movie.vote_average}</p>
                                 <p><strong>Popularity: </strong>{movie.popularity}</p>
                                 <p>{movie.genres.map((genre, i) => {
@@ -58,7 +58,7 @@ class MovieLarge extends Component {
                                         }})}</p>
                                 <p>{movie.spoken_languages ? movie.spoken_languages.map((lan, i) => {
                                         if(i === 0){
-                                            return <span><strong>{movie.spoken_languages.length > 1 ? 'Spoken Languages: ' : 'Spoken Language '}</strong>{lan.name}</span>
+                                            return <span><strong>{movie.spoken_languages.length > 1 ? 'Languages: ' : 'Language: '}</strong>{lan.name}</span>
                                         } else {
                                             return <span>, {lan.name}</span>
                                         }}): null}</p>
@@ -139,7 +139,7 @@ const MoviesLargeDiv = styled.div`
             justify-content: flex-end;
             width: 100%;
             @media(max-width: 500px){
-                flex-direction: column;
+                flex-direction: column-reverse;
                 align-items: flex-start;
             }
             .details, .poster {

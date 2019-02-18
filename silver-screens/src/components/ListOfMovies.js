@@ -87,9 +87,7 @@ const ListOfMoviesDiv = styled.div`
         align-content: space-between;
         justify-content: space-between;
         width: 100%;
-        @media (max-width: 500px) {
-            /* max-width: 49%; */
-        }
+        
     }
     .line {
         /* REPEAT */
