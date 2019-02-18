@@ -46,11 +46,13 @@ class App extends Component {
                             <LetterBoxString static word="Mike" />
                         </a>
                     </div>
-                    <a href="https://www.themoviedb.org/">
-                        {/* <LetterBoxString static word="Movies" /> */}
-                        <LetterBoxString static word="API:TheMovieDB" />
-                        {/* <LetterBoxString static word="TheMovieDB" /> */}
-                    </a>
+                    <div className="right">
+                        <a href="https://www.themoviedb.org/">
+                            {/* <LetterBoxString static word="Movies" /> */}
+                            <LetterBoxString static word="API:TheMovieDB" />
+                            {/* <LetterBoxString static word="TheMovieDB" /> */}
+                        </a>
+                    </div>
                 </footer>
             </AppDiv>
         )
@@ -86,7 +88,7 @@ const AppDiv = styled.div`
         flex-direction: row;
         justify-content: space-around;
         width: 80%;
-        .left{
+        .left, .right {
             /* border: 1px solid green; */
             display: flex;
             flex-direction: row;
@@ -102,8 +104,12 @@ const AppDiv = styled.div`
         }
         @media (max-width: 500px) {
             flex-direction: column;
-            /* .left {margin: 5px;} */
-            a{border-top: 1px solid black;}
+            .left, .right {
+                ${line()}; 
+            }
+        }
+        @media (min-width: 500px) {
+            ${line()};
         }
     }
 `
