@@ -68,9 +68,9 @@ const HeaderDiv = styled.header`
     align-items: center;
     justify-content: space-evenly;
     .marquee {
-        border: 1px solid red;
+        /* border: 1px solid red; */
         width: 80%;
-        border: 5px dashed yellow;
+        border: 5px dotted yellow;
         padding: 5px;
         margin: 5px;
     }
