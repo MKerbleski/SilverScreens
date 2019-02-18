@@ -95,6 +95,7 @@ const LetterBoxStringDiv = styled.div`
         color: black;
         height: auto;
         :hover{
+            background: orange;
             cursor: pointer;
         }
         a {

@@ -119,16 +119,17 @@ const MoviesLargeDiv = styled.div`
     box-sizing: border-box;
     background: #aa7a87;
     .title {
+        border: 1px solid purple;
         width: 100%;
         h1{
             text-align: center;
         }
-        display: flex;
-        justify-content: center;
     }
     .content {
-
+        border: 1px solid blue;
         .top {
+            border: 1px solid green;
+            box-sizing: border-box;
             display: flex;
             flex-direction: row;
             justify-content: flex-end;
@@ -137,25 +138,18 @@ const MoviesLargeDiv = styled.div`
                 flex-direction: column;
                 align-items: flex-start;
             }
-            .details{
-                width: 50%;
-                padding: 0 10px;
-                 top: 0;
+            .details, .poster {
                 border: 1px solid red;
-                p{margin: 0}
+                width: 50%;
+                padding: 5px;
                 @media(max-width: 500px){
                     width: 100%;
                 }
-            }
-            .poster{
-                width: 50%;
-                @media(max-width: 500px){
-                    width: 100%;
+                p {
+                    margin-top: 0
                 }
                 img {
                     width: 100%;
-                    height: auto;
-                    display: flex;
                 }
             }
         }

@@ -76,7 +76,7 @@ const ListOfMoviesDiv = styled.div`
     align-items: center;
     overflow: hidden;
     max-width: 2000px;
-    margin-top: 5px;
+    padding: 5px;
     .movies {
         /* border: 1px solid green; */
         display: flex;
@@ -92,6 +92,7 @@ const ListOfMoviesDiv = styled.div`
     .line {
         /* REPEAT */
         margin-top: 5px;
+        width: 80%;
        ${line()}
     }
 `

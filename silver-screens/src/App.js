@@ -64,6 +64,7 @@ const AppDiv = styled.div`
     min-height: 100vh;
     min-width: 75vw;
     width: 90vw;
+    overflow: auto;
     footer {
         ${line()};
         margin-bottom: 3px;
