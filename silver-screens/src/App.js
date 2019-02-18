@@ -4,9 +4,11 @@ import { Route, withRouter } from "react-router-dom";
 
 import { MovieLarge, Nav, ListOfMovies, Header,LetterBoxString } from './components/index';
 import { line } from './style/sharedStyles'
+import { connect } from 'react-redux';
 
 class App extends Component {
     render() {
+        console.log(this.props.store)
         return (
             <AppDiv>
                 <div>
@@ -25,9 +27,9 @@ class App extends Component {
                         path={`/search/:params`} 
                         component={ListOfMovies} />
                 </div>
-                <div className="bottomNav">
+                {this.props.store.movieDetails ? null: <div className="bottomNav">
                     <Nav />
-                </div>
+                </div>}
                 <footer> 
                     <div className="left">
                         <a  rel="noopener noreferrer"
@@ -51,11 +53,13 @@ class App extends Component {
         )
     }
 }
-
-export default withRouter(App)
+const mapStateToProps = store => {
+    return { store: store };
+}
+export default withRouter(connect(mapStateToProps)(App))
 
 const AppDiv = styled.div`
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

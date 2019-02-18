@@ -12,15 +12,7 @@ import {
 } from './index'
 
 class MovieLarge extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            expand: false,
-        }
-    }
-
     componentDidMount(){
-        // console.log("CDM", this.props)
         this.props.getMovieDetails(this.props.match.params.id)
     }
 
@@ -29,9 +21,8 @@ class MovieLarge extends Component {
     }
 
     render(){
-        const  movie  = this.props.store.movieDetails
-        console.log(movie)
-        if(false){
+        const movie = this.props.store.movieDetails;
+        if(movie){
             return (
                 <MoviesLargeDiv id={movie.id}>
                     <div className="title">
@@ -46,48 +37,46 @@ class MovieLarge extends Component {
                         </h1>
                     </div>
                     <div className="content">
-                            <div className="top">
-                                <div className="poster">
-                                    <img 
-                                        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} 
-                                        alt={`${movie.original_title} poster`} />   
-                                </div>
-                                <div className="details">
-                                    {movie.adult ? <p>ADULT</p> : null}
-                                    <p><strong>Total Votes: </strong>{movie.vote_count}</p>
-                                    <p>Genere(s):
-                                        {movie.genres.map(genre => {
-                                            return <span> {genre.name}</span>})}
-                                    </p>
-                                    
-                                    <p>Release Date: {movie.release_date}</p>
-                                    <p>Revenue: {movie.revenue}</p>
-                                    <p>Minutes: {movie.runtime}</p>
-                                    <p>Tagline: {movie.tagline}</p>
-                                    <p>Budget: {movie.budget}</p>
-                                    <p>Vote Average: {movie.vote_average}</p>
-                                    <p>Vote Count: {movie.vote_count}</p>
-                                    <p>Popularity: {movie.popularity}</p>
-                                    <p>Vote Average: {movie.vote_average}</p>
-                                    <p>Language: {movie.original_language}</p>
-                                </div>
+                        <div className="top">
+                            <div className="poster">
+                                <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={`${movie.original_title} poster`} />
                             </div>
-                            <p>Overview: {movie.overview}</p>
-                            <p>Release Date: {movie.release_date}</p>
-                            {movie.adult ? <p>ADULT</p>: null}
-                            <p>Production Companies:  
-                                {movie.production_companies ? movie.production_companies.map(company => {
-                                    return <span key={company.name}>{company.name}</span>
-                                }): null}</p>
-                            <p>Production Countries: 
-                                {movie.production_countries ? movie.production_countries.map(country => {
-                                    return <span key={country.name}>{country.name}</span>
-                                }): null}</p>
-                            <p>Spoken Languages: 
-                                {movie.spoken_languages ? movie.spoken_languages.map(language => {
-                                    return <span key={language.name}>{language.name}</span>
-                                }): null}</p>
+                            <div className="details">
+                                {movie.adult ? <p>ADULT</p> : null}
+                                <p><strong>Total Votes: </strong>{movie.vote_count}</p>
+                                <p>Genere(s):
+                                    {movie.genres.map(genre => {
+                                        return <span> {genre.name}</span>})}
+                                </p>
+                                
+                                <p>Release Date: {movie.release_date}</p>
+                                <p>Revenue: {movie.revenue}</p>
+                                <p>Minutes: {movie.runtime}</p>
+                                <p>Tagline: {movie.tagline}</p>
+                                <p>Budget: {movie.budget}</p>
+                                <p>Vote Average: {movie.vote_average}</p>
+                                <p>Vote Count: {movie.vote_count}</p>
+                                <p>Popularity: {movie.popularity}</p>
+                                <p>Vote Average: {movie.vote_average}</p>
+                                <p>Language: {movie.original_language}</p>
+                            </div>
                         </div>
+                        <p>Overview: {movie.overview}</p>
+                        <p>Release Date: {movie.release_date}</p>
+                        {movie.adult ? <p>ADULT</p>: null}
+                        <p>Production Companies:  
+                            {movie.production_companies ? movie.production_companies.map(company => {
+                                return <span key={company.name}>{company.name}</span>
+                            }): null}</p>
+                        <p>Production Countries: 
+                            {movie.production_countries ? movie.production_countries.map(country => {
+                                return <span key={country.name}>{country.name}</span>
+                            }): null}</p>
+                        <p>Spoken Languages: 
+                            {movie.spoken_languages ? movie.spoken_languages.map(language => {
+                                return <span key={language.name}>{language.name}</span>
+                            }): null}</p>
+                    </div>
                 </MoviesLargeDiv>
         )
     } else {

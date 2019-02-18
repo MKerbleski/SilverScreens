@@ -1,5 +1,6 @@
 import React , { Component } from 'react'
 import styled from 'styled-components'
+import { Link } from "react-router-dom";
 
 export default class Loading extends Component {
     constructor(props){
@@ -10,9 +11,18 @@ export default class Loading extends Component {
     }
 
     render(){
+        console.log(this.props.error)
         return(
             <LoadingDiv> 
-                {this.props.error ? <p>Error: {this.props.error}</p> : <h3>Loading...</h3> }
+                {this.props.error 
+                    ?   <>
+                            <p>
+                                Error: {this.props.error.message}   
+                            </p> 
+                            <Link to='/'>Home</Link>
+                        </>
+                    :   <h3>Loading...</h3> }
+                
             </LoadingDiv>
         )
     }
@@ -25,4 +35,8 @@ const LoadingDiv = styled.div`
     justify-content: flex-start;
     align-items: center;
     color: white;
+    width: 100%;
+    a {
+        color: white
+    }
 `

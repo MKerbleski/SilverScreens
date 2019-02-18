@@ -13,12 +13,16 @@ class ListOfMovies extends Component {
     }
 
     getList(){
+        console.log(this)
         if (this.props.match.url.includes('search')){
             let query = this.props.match.url.slice(8)
             this.props.fetchList('search', 1, query)
         } else if (this.props.match.url.includes('sort')){
             let catagory = this.props.match.url.slice(6)
-            this.props.fetchList(catagory)
+            if(catagory === "undefined"){
+                catagory = 'now_playing'
+            }
+            this.props.fetchList(catagory, this.props.store.pageNum)
         } else {
             if(this.props.match.url === '/'){
                 let defaultCat = 'now_playing'
