@@ -11,7 +11,6 @@ class SearchBar extends Component {
         this.state = {
             searchInput: '',
             active: false,
-            // check: false,
         }
     }
 
@@ -20,10 +19,12 @@ class SearchBar extends Component {
             this.setState({
                 searchInput: '',
             })
-        } else if(e === 'search'){
-            window.location.push(`/search/${this.state.searchInput}`)
+            this.props.requireUpdate()
+        } else {
+            this.setState({
+                [e.target.name]: e.target.value
+            })
         }
-        this.props.requireUpdate()
     }
 
     render(){
@@ -31,17 +32,12 @@ class SearchBar extends Component {
             <SearchBarDiv>
                 {this.state.active 
                     ?   <>  
-                            <form onSubmit={(e) => this.inputHandler("search")}>
-                                <input 
-                                    placeholder="search here"
-                                    name="searchInput" 
-                                    value={this.state.searchInput}
-                                    onChange={(e) =>  
-                                        this.setState({
-                                            [e.target.name]: e.target.value
-                                        })}
-                                    >{this.value}</input>
-                            </form>
+                            <input 
+                                placeholder="search here"
+                                name="searchInput" 
+                                value={this.state.searchInput}
+                                onChange={(e) => this.inputHandler(e)}
+                                >{this.value}</input>
                             <LetterBoxString 
                                 word='Search'
                                 url={this.state.searchInput.length > 0 ? `/search/${this.state.searchInput}` : '/'} />

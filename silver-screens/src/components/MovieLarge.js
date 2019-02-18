@@ -35,47 +35,50 @@ class MovieLarge extends Component {
                                     </a> 
                                 : null} 
                         </h1>
+                        <p><strong>{movie.tagline}</strong></p>
                     </div>
                     <div className="content">
                         <div className="top">
+                            
+                            <div className="details">
+                                {movie.adult ? <p>ADULT</p> : null}
+                                <p><strong>Overview: </strong>{movie.overview}</p>
+                                <p><strong>Minutes: </strong>{movie.runtime}</p>
+                                <p><strong>Release Date: </strong>{movie.release_date}</p>
+                                <p><strong>Budget: </strong>${Number(movie.budget).toLocaleString('en')}</p>
+                                <p><strong>Revenue: </strong>${Number(movie.revenue).toLocaleString('en')}</p>
+                                <p><strong>Total Votes: </strong>{movie.vote_count}</p>
+                                <p><strong>Vote Average: </strong>{movie.vote_average}</p>
+                                <p><strong>Popularity: </strong>{movie.popularity}</p>
+                                <p>{movie.genres.map((genre, i) => {
+                                        if(i === 0){
+                                            return <span><strong>{movie.genres.length > 1 ? 'Genres: ' : 'Genre: '}</strong>{genre.name}</span>
+                                        } else {
+                                            return <span>, {genre.name}</span>
+                                        }})}</p>
+                                <p>{movie.spoken_languages ? movie.spoken_languages.map((lan, i) => {
+                                        if(i === 0){
+                                            return <span><strong>{movie.spoken_languages.length > 1 ? 'Spoken Languages: ' : 'Spoken Language '}</strong>{lan.name}</span>
+                                        } else {
+                                            return <span>, {lan.name}</span>
+                                        }}): null}</p>
+                                <p>{movie.production_companies ? movie.production_companies.map((co, i) => {
+                                        if(i === 0){
+                                            return <span><strong>{movie.production_companies.length > 1 ? 'Production Companies: ' : 'Production Company: '}</strong>{co.name}</span>
+                                        } else {
+                                            return <span>, {co.name}</span>
+                                        }}): null}</p>
+                                <p>{movie.production_countries ? movie.production_countries.map((co, i) => {
+                                        if(i === 0){
+                                            return <span><strong>{movie.production_countries.length > 1 ? 'Production Countries: ' : 'Production Country: '}</strong>{co.name}</span>
+                                        } else {
+                                            return <span>, {co.name}</span>
+                                        }}): null}</p>
+                            </div>
                             <div className="poster">
                                 <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={`${movie.original_title} poster`} />
                             </div>
-                            <div className="details">
-                                {movie.adult ? <p>ADULT</p> : null}
-                                <p><strong>Total Votes: </strong>{movie.vote_count}</p>
-                                <p>Genere(s):
-                                    {movie.genres.map(genre => {
-                                        return <span> {genre.name}</span>})}
-                                </p>
-                                
-                                <p>Release Date: {movie.release_date}</p>
-                                <p>Revenue: {movie.revenue}</p>
-                                <p>Minutes: {movie.runtime}</p>
-                                <p>Tagline: {movie.tagline}</p>
-                                <p>Budget: {movie.budget}</p>
-                                <p>Vote Average: {movie.vote_average}</p>
-                                <p>Vote Count: {movie.vote_count}</p>
-                                <p>Popularity: {movie.popularity}</p>
-                                <p>Vote Average: {movie.vote_average}</p>
-                                <p>Language: {movie.original_language}</p>
-                            </div>
                         </div>
-                        <p>Overview: {movie.overview}</p>
-                        <p>Release Date: {movie.release_date}</p>
-                        {movie.adult ? <p>ADULT</p>: null}
-                        <p>Production Companies:  
-                            {movie.production_companies ? movie.production_companies.map(company => {
-                                return <span key={company.name}>{company.name}</span>
-                            }): null}</p>
-                        <p>Production Countries: 
-                            {movie.production_countries ? movie.production_countries.map(country => {
-                                return <span key={country.name}>{country.name}</span>
-                            }): null}</p>
-                        <p>Spoken Languages: 
-                            {movie.spoken_languages ? movie.spoken_languages.map(language => {
-                                return <span key={language.name}>{language.name}</span>
-                            }): null}</p>
                     </div>
                 </MoviesLargeDiv>
         )
@@ -111,11 +114,14 @@ const MoviesLargeDiv = styled.div`
     box-sizing: border-box;
     background: #aa7a87;
     .title {
-        border: 1px solid purple;
+        /* border: 1px solid purple; */
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         h1 {
             margin: 0;
-            font-size: 10vw;
+            font-size: 9vw;
             text-align: center;
             vertical-align: center;
             i {
@@ -124,9 +130,9 @@ const MoviesLargeDiv = styled.div`
         }
     }
     .content {
-        border: 1px solid blue;
+        /* border: 1px solid blue; */
         .top {
-            border: 1px solid green;
+            /* border: 1px solid green; */
             box-sizing: border-box;
             display: flex;
             flex-direction: row;
@@ -137,7 +143,7 @@ const MoviesLargeDiv = styled.div`
                 align-items: flex-start;
             }
             .details, .poster {
-                border: 1px solid red;
+                /* border: 1px solid red; */
                 width: 50%;
                 padding: 5px;
                 @media(max-width: 500px){
@@ -154,6 +160,9 @@ const MoviesLargeDiv = styled.div`
     }
     a {
         font-size: 40px;
+    }
+    p {
+        margin: 4px;
     }
 
 `

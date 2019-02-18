@@ -13,7 +13,7 @@ class ListOfMovies extends Component {
     }
 
     getList(){
-        console.log(this)
+        // console.log(this)
         if (this.props.match.url.includes('search')){
             let query = this.props.match.url.slice(8)
             this.props.fetchList('search', 1, query)
