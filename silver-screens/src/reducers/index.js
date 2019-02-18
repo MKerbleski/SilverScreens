@@ -14,6 +14,7 @@ const initialState =  {
     pageNum: 1,
     catagory: 'Now Playing',
     update: false,
+    error: null
 }
 
 export const reducer = (state=initialState, action) => {

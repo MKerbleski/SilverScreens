@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { fetchList } from '../actions'
-import { Nav, MovieSmall } from './index';
+import { Loading, MovieSmall } from './index';
 import { line } from '../style/sharedStyles'
 
 class ListOfMovies extends Component {
@@ -38,13 +38,14 @@ class ListOfMovies extends Component {
             console.log("REDIRECT")
             return <Redirect to='/' />
         }
+        console.log(this.props.store)
         return(
             <ListOfMoviesDiv>                
                 <div className="movies">
                     {this.props.store.movieList ? 
                         this.props.store.movieList.map(movie => {
                             return <MovieSmall key={movie.id} movie={movie} />
-                        }) : <h1>loading...</h1>}
+                        }) : <Loading error={this.props.store.error} />}
                 </div>
                 {this.props.store.movieList && 
                     this.props.store.movieList.length === 0 ? 

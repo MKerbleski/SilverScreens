@@ -7,6 +7,9 @@ import {
     clearMovieDetails    
 } from '../actions'
 
+import {
+    Loading
+} from './index'
 
 class MovieLarge extends Component {
     constructor(props){
@@ -28,7 +31,7 @@ class MovieLarge extends Component {
     render(){
         const  movie  = this.props.store.movieDetails
         console.log(movie)
-        if(movie){
+        if(false){
             return (
                 <MoviesLargeDiv id={movie.id}>
                     <div className="title">
@@ -88,7 +91,7 @@ class MovieLarge extends Component {
                 </MoviesLargeDiv>
         )
     } else {
-        return <h1>Loading</h1>
+        return <Loading error={this.props.store.error}/>
     }
     }
 }

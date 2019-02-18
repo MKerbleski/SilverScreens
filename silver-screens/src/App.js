@@ -25,7 +25,7 @@ class App extends Component {
                         path={`/search/:params`} 
                         component={ListOfMovies} />
                 </div>
-                <div className="line">
+                <div className="bottomNav">
                     <Nav />
                 </div>
                 <footer> 
@@ -68,7 +68,7 @@ const AppDiv = styled.div`
     min-width: 75vw;
     width: 90vw;
     overflow: auto;
-    .line {
+    .bottomNav {
         ${line()};
         width: 80%;
     }
