@@ -53,7 +53,14 @@ class MovieLarge extends Component {
                                         return <span> {genre.name}</span>})}
                                 </p>
                                 
-                                <p>{movie.budget}</p>
+                                <p>Release Date: {movie.release_date}</p>
+                                <p>Revenue: {movie.revenue}</p>
+                                <p>Minutes: {movie.runtime}</p>
+                                <p>Tagline: {movie.tagline}</p>
+                                <p>Budget: {movie.budget}</p>
+                                <p>Vote Average: {movie.vote_average}</p>
+                                <p>Vote Count: {movie.vote_count}</p>
+                                <p>Popularity: {movie.popularity}</p>
                                 <p>Vote Average: {movie.vote_average}</p>
                                 <p>Language: {movie.original_language}</p>
                             </div>
@@ -64,9 +71,20 @@ class MovieLarge extends Component {
                             </div>
                         </div>
                         <p>Overview: {movie.overview}</p>
-                        <p>Popularity: {movie.popularity}</p>
                         <p>Release Date: {movie.release_date}</p>
                         {movie.adult ? <p>ADULT</p>: null}
+                        <p>Production Companies:  
+                            {movie.production_companies ? movie.production_companies.map(company => {
+                                return <span>{company.name}</span>
+                            }): null}</p>
+                        <p>Production Countries: 
+                            {movie.production_countries ? movie.production_countries.map(country => {
+                                return <span>{country.name}</span>
+                            }): null}</p>
+                        <p>Spoken Languages: 
+                            {movie.spoken_languages ? movie.spoken_languages.map(language => {
+                                return <span>{language.name}</span>
+                            }): null}</p>
                     </div>
                 </MoviesLargeDiv>
         )
@@ -96,6 +114,7 @@ const MoviesLargeDiv = styled.div`
     justify-content: flex-start;
     flex-wrap: nowrap;
     margin: 15px 0;
+    padding: 5px;
     height: auto;
     width: 100%;
     box-sizing: border-box;
@@ -109,15 +128,13 @@ const MoviesLargeDiv = styled.div`
     .words {
         color: white;
         /* border: 1px solid green; */
-        margin: 0 5px;
-        padding: 5px;
-        /* max-width: 500px; */
+        padding: 10px;
         height: 100%;
         width: 100%;
         .top{
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: flex-end;
             .topLeft{
                 width: 50%;
                 @media(min-width: 1000px){
@@ -133,8 +150,8 @@ const MoviesLargeDiv = styled.div`
                     @media(min-width: 1000px){
                         display: none;
                     }
+                }
             }
-        }
         }
         a {
             font-size: 40px;
