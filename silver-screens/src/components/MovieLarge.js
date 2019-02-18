@@ -75,15 +75,15 @@ class MovieLarge extends Component {
                         {movie.adult ? <p>ADULT</p>: null}
                         <p>Production Companies:  
                             {movie.production_companies ? movie.production_companies.map(company => {
-                                return <span>{company.name}</span>
+                                return <span key={company.name}>{company.name}</span>
                             }): null}</p>
                         <p>Production Countries: 
                             {movie.production_countries ? movie.production_countries.map(country => {
-                                return <span>{country.name}</span>
+                                return <span key={country.name}>{country.name}</span>
                             }): null}</p>
                         <p>Spoken Languages: 
                             {movie.spoken_languages ? movie.spoken_languages.map(language => {
-                                return <span>{language.name}</span>
+                                return <span key={language.name}>{language.name}</span>
                             }): null}</p>
                     </div>
                 </MoviesLargeDiv>
