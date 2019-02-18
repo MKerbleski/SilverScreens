@@ -60,7 +60,6 @@ const AppDiv = styled.div`
     align-items: center;
     height: auto;
     padding: 0;
-    /* margin: 0 50px; */
     max-width: 2000px;
     min-height: 100vh;
     min-width: 75vw;
