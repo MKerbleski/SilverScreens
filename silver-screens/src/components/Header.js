@@ -10,7 +10,7 @@ const catagories = [
     {'url':'now_playing',
     'name': 'Now Playing'}, 
     {'url':'popular',
-    'name': 'Popular'}, 
+    'name': 'Trending'}, 
     {'url':'top_rated',
     'name': 'Top Rated'}, 
 ]
