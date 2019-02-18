@@ -17,40 +17,39 @@ const catagories = [
 
 class Header extends Component {
     render(){
-        console.log(this)
         return(
             <HeaderDiv> 
                 <Link to='/'>
                     <h1>Silver Screens</h1>
                 </Link> 
                 <div className="marquee">
-                    {this.props.store.movieDetails ? 
-                        <div className="line">
-                            <LetterBoxString 
-                                word="Back"
-                                url={`/sort/${this.props.store.catagory}`} />
-                        </div> :
-                        <>
-                            {catagories.map(catagory => {
-                                return (
-                                    <div key={catagory.url} className="line">
-                                        {catagory.name.split(' ').map(word => {
-                                            return <LetterBoxString
-                                                        highlight={this.props.store.catagory === catagory.url}
-                                                        key={word} 
-                                                        word={word}
-                                                        url={`/sort/${catagory.url}`} />
-                                        })}
-                                    </div>)
-                                })
-                            }
-                            <div className="line">
-                                <Search />
-                            </div>
-                            <div className="line">
-                                <Nav />
-                            </div>
-                        </>
+                    {this.props.store.movieDetails 
+                        ?   <div className="line">
+                                <LetterBoxString 
+                                    word="Back"
+                                    url={`/sort/${this.props.store.catagory}`} />
+                            </div> 
+                        :   <>
+                                {catagories.map(catagory => {
+                                    return (
+                                        <div key={catagory.url} className="line">
+                                            {catagory.name.split(' ').map(word => {
+                                                return <LetterBoxString
+                                                    highlight={this.props.store.catagory === catagory.url}
+                                                    key={word} 
+                                                    word={word}
+                                                    url={`/sort/${catagory.url}`} />
+                                            })}
+                                        </div>)
+                                    })
+                                }
+                                <div className="line">
+                                    <Search />
+                                </div>
+                                <div className="line">
+                                    <Nav />
+                                </div>
+                            </>
                     }
                 </div>
             </HeaderDiv>
