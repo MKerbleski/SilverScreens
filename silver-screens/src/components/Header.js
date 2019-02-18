@@ -17,6 +17,7 @@ const catagories = [
 
 class Header extends Component {
     render(){
+        console.log(this)
         return(
             <HeaderDiv> 
                 <Link to='/'>
@@ -27,7 +28,7 @@ class Header extends Component {
                         <div className="line">
                             <LetterBoxString 
                                 word="Back"
-                                url='/' />
+                                url={`/sort/${this.props.store.catagory}`} />
                         </div> :
                         <>
                             {catagories.map(catagory => {
@@ -64,7 +65,7 @@ const mapStateToProps = store => {
 export default connect(mapStateToProps)(Header);
 
 const HeaderDiv = styled.header`
-    border: 1px solid green;
+    /* border: 1px solid green; */
     display: flex;
     flex-direction: column;
     align-items: center;

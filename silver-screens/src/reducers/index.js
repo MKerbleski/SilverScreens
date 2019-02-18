@@ -12,7 +12,7 @@ import {
 
 const initialState =  {
     pageNum: 1,
-    catagory: 'Now Playing',
+    // catagory: 'Now Playing',
     update: false,
     error: null
 }
