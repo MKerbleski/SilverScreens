@@ -8,20 +8,16 @@ export default class Loading extends Component {
             <LoadingDiv> 
                 {this.props.error 
                     ?   <>
-                            <p>
-                                Error: {this.props.error.message}   
-                            </p> 
+                            <p>Error: {this.props.error.message}</p> 
                             <Link to='/'>Home</Link>
                         </>
-                    :   <h3>Loading...</h3> }
-                
+                    :   <h3>Loading...</h3>}
             </LoadingDiv>
         )
     }
 }
 
 const LoadingDiv = styled.div`
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

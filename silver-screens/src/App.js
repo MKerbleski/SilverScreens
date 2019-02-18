@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 
 class App extends Component {
     render() {
-        console.log(this.props.store)
         return (
             <AppDiv>
                 <div>
@@ -27,12 +26,13 @@ class App extends Component {
                         path={`/search/:params`} 
                         component={ListOfMovies} />
                 </div>
-                {this.props.store.movieDetails || this.props.store.movieList &&
-                    this.props.store.movieList.length === 0 
+                {this.props.store.movieDetails 
                     ?   null 
-                    :   <div className="bottomNav">
-                            <Nav />
-                        </div>}
+                    :   this.props.store.movieList && this.props.store.movieList.length === 0 
+                        ?   null 
+                        :   <div className="bottomNav">
+                                <Nav />
+                            </div>}
                 <footer className="bottomNav"> 
                     <div className="left">
                         <a  rel="noopener noreferrer"
@@ -41,16 +41,12 @@ class App extends Component {
                             <LetterBoxString justIcon fontA="fab fa-github" />
                         </a>
                         <a href="http://mikerble.ski">
-                            {/* <LetterBoxString static word="Made" />
-                            <LetterBoxString static word="by:" /> */}
                             <LetterBoxString static word="Mike" />
                         </a>
                     </div>
                     <div className="right">
                         <a href="https://www.themoviedb.org/">
-                            {/* <LetterBoxString static word="Movies" /> */}
                             <LetterBoxString static word="API:TheMovieDB" />
-                            {/* <LetterBoxString static word="TheMovieDB" /> */}
                         </a>
                     </div>
                 </footer>
@@ -64,7 +60,6 @@ const mapStateToProps = store => {
 export default withRouter(connect(mapStateToProps)(App))
 
 const AppDiv = styled.div`
-    /* border: 1px solid blue; */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -82,14 +77,12 @@ const AppDiv = styled.div`
         width: 80%;
     }
     footer {
-        /* ${line()}; */
         margin-bottom: 3px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         width: 80%;
         .left, .right {
-            /* border: 1px solid green; */
             display: flex;
             flex-direction: row;
             justify-content: space-between;

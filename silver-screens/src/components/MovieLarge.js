@@ -31,7 +31,7 @@ class MovieLarge extends Component {
                                 ?   <a  rel="noopener noreferrer"
                                         target="_blank" 
                                         href={`https://www.imdb.com/showtimes/title/${movie.imdb_id}`}>
-                                        <i class="fab fa-imdb"></i>
+                                        <i className="fab fa-imdb"></i>
                                     </a> 
                                 : null} 
                         </h1>
@@ -52,27 +52,27 @@ class MovieLarge extends Component {
                                 <p><strong>Popularity: </strong>{movie.popularity}</p>
                                 <p>{movie.genres.map((genre, i) => {
                                         if(i === 0){
-                                            return <span><strong>{movie.genres.length > 1 ? 'Genres: ' : 'Genre: '}</strong>{genre.name}</span>
+                                            return <span key={genre.name}><strong>{movie.genres.length > 1 ? 'Genres: ' : 'Genre: '}</strong>{genre.name}</span>
                                         } else {
-                                            return <span>, {genre.name}</span>
+                                            return <span key={genre.name}>, {genre.name}</span>
                                         }})}</p>
                                 <p>{movie.spoken_languages ? movie.spoken_languages.map((lan, i) => {
                                         if(i === 0){
-                                            return <span><strong>{movie.spoken_languages.length > 1 ? 'Languages: ' : 'Language: '}</strong>{lan.name}</span>
+                                            return <span key={lan.name}><strong>{movie.spoken_languages.length > 1 ? 'Languages: ' : 'Language: '}</strong>{lan.name}</span>
                                         } else {
-                                            return <span>, {lan.name}</span>
+                                            return <span key={lan.name}>, {lan.name}</span>
                                         }}): null}</p>
                                 <p>{movie.production_companies ? movie.production_companies.map((co, i) => {
                                         if(i === 0){
-                                            return <span><strong>{movie.production_companies.length > 1 ? 'Production Companies: ' : 'Production Company: '}</strong>{co.name}</span>
+                                            return <span key={co.name}><strong>{movie.production_companies.length > 1 ? 'Production Companies: ' : 'Production Company: '}</strong>{co.name}</span>
                                         } else {
-                                            return <span>, {co.name}</span>
+                                            return <span key={co.name}>, {co.name}</span>
                                         }}): null}</p>
                                 <p>{movie.production_countries ? movie.production_countries.map((co, i) => {
                                         if(i === 0){
-                                            return <span><strong>{movie.production_countries.length > 1 ? 'Production Countries: ' : 'Production Country: '}</strong>{co.name}</span>
+                                            return <span key={co.name}><strong>{movie.production_countries.length > 1 ? 'Production Countries: ' : 'Production Country: '}</strong>{co.name}</span>
                                         } else {
-                                            return <span>, {co.name}</span>
+                                            return <span key={co.name}>, {co.name}</span>
                                         }}): null}</p>
                             </div>
                             <div className="poster">
@@ -100,8 +100,6 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps, mapDispatchToProps)(MovieLarge)
 
 const MoviesLargeDiv = styled.div`
-    /* border: 1px solid red; */
-    /* min-width: 300px; */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -114,7 +112,6 @@ const MoviesLargeDiv = styled.div`
     box-sizing: border-box;
     background: #aa7a87;
     .title {
-        /* border: 1px solid purple; */
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -130,9 +127,7 @@ const MoviesLargeDiv = styled.div`
         }
     }
     .content {
-        /* border: 1px solid blue; */
         .top {
-            /* border: 1px solid green; */
             box-sizing: border-box;
             display: flex;
             flex-direction: row;
@@ -143,7 +138,6 @@ const MoviesLargeDiv = styled.div`
                 align-items: flex-start;
             }
             .details, .poster {
-                /* border: 1px solid red; */
                 width: 50%;
                 padding: 5px;
                 @media(max-width: 500px){

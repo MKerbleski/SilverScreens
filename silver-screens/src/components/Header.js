@@ -62,20 +62,17 @@ const mapStateToProps = store => {
 export default connect(mapStateToProps)(Header);
 
 const HeaderDiv = styled.header`
-    /* border: 1px solid green; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     .marquee {
-        /* border: 1px solid red; */
         width: 80%;
         border: 5px dotted yellow;
         padding: 5px;
         margin: 5px;
     }
     .line {
-        /* REPEAT */
         ${line()}
     }
     a {
@@ -85,7 +82,6 @@ const HeaderDiv = styled.header`
         font-size: 8vw;
         font-family: marqueeregular, Arial, Helvetica, sans-serif;
         color: gold;
-        /* background: white; */
         width: 100%;
         margin: 0;
     }

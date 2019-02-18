@@ -13,7 +13,6 @@ class ListOfMovies extends Component {
     }
 
     getList(){
-        // console.log(this)
         if (this.props.match.url.includes('search')){
             let query = this.props.match.url.slice(8)
             this.props.fetchList('search', 1, query)
@@ -39,21 +38,19 @@ class ListOfMovies extends Component {
             this.getList()
         }
         if(this.props.match.url === 'search/'){
-            console.log("REDIRECT")
             return <Redirect to='/' />
         }
-        console.log(this.props.store)
         return(
             <ListOfMoviesDiv>                
                 <div className="movies">
-                    {this.props.store.movieList ? 
-                        this.props.store.movieList.map(movie => {
-                            return <MovieSmall key={movie.id} movie={movie} />
-                        }) : <Loading error={this.props.store.error} />}
+                    {this.props.store.movieList 
+                        ?   this.props.store.movieList.map(movie => {
+                                return <MovieSmall key={movie.id} movie={movie} /> }) 
+                        :   <Loading error={this.props.store.error} />}
                 </div>
-                {this.props.store.movieList && 
-                    this.props.store.movieList.length === 0 ? 
-                        <h4>No Movies found</h4> : null} 
+                {this.props.store.movieList && this.props.store.movieList.length === 0 
+                    ?   <h4>No Movies found</h4> 
+                    : null} 
             </ListOfMoviesDiv>
         )
     }
@@ -64,14 +61,12 @@ const mapStateToProps = store => {
 }
 
 const mapDispatchToProps = {
-    // changeCatagory,
     fetchList,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListOfMovies)
 
 const ListOfMoviesDiv = styled.div`
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -80,17 +75,14 @@ const ListOfMoviesDiv = styled.div`
     max-width: 2000px;
     padding: 5px;
     .movies {
-        /* border: 1px solid green; */
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         align-content: space-between;
         justify-content: space-between;
         width: 100%;
-        
     }
     .line {
-        /* REPEAT */
         ${line()}
         margin-top: 5px;
         width: 80%;

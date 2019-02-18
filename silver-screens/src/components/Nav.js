@@ -17,18 +17,18 @@ class Nav extends Component {
         } else {
             return(
                 <NavDiv className="line"> 
-                    {pageNum === 1 ?
-                        <span className="lineItem"/> :
-                        <span className="lineItem">
-                            <LetterBoxString 
-                                className="lineItem"
-                                word='Prev'
-                                icon fontA="fas fa-arrow-left"
-                                pageNum={pageNum-1}
-                                catagory={catagory}
-                                navigate={this.props.changePage}
-                                />
-                        </span>
+                    {pageNum === 1 
+                        ?   <span className="lineItem"/> 
+                        :   <span className="lineItem">
+                                <LetterBoxString 
+                                    className="lineItem"
+                                    word='Prev'
+                                    icon fontA="fas fa-arrow-left"
+                                    pageNum={pageNum-1}
+                                    catagory={catagory}
+                                    navigate={this.props.changePage}
+                                    />
+                            </span>
                     }
                     <span className="lineItem largeNum">
                         <LetterBoxString 
@@ -52,18 +52,19 @@ class Nav extends Component {
                             static
                             word={`#${pageNum}`} />
                     </span>
-                    {totalPages === pageNum ?
-                        <span  className="lineItem"/> :
-                        <span className="lineItem">
-                            <LetterBoxString 
-                                className="lineItem"
-                                word='Next'
-                                icon fontA="fas fa-arrow-right"
-                                pageNum={pageNum+1}
-                                catagory={catagory}
-                                navigate={this.props.changePage}
-                                />
-                        </span>}
+                    {totalPages === pageNum 
+                        ?   <span  className="lineItem"/> 
+                        :   <span className="lineItem">
+                                <LetterBoxString 
+                                    className="lineItem"
+                                    word='Next'
+                                    icon fontA="fas fa-arrow-right"
+                                    pageNum={pageNum+1}
+                                    catagory={catagory}
+                                    navigate={this.props.changePage}
+                                    />
+                            </span>
+                    }
                 </NavDiv>
             )
         }
@@ -81,7 +82,6 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps, mapDispatchToProps)(Nav)
 
 const NavDiv = styled.div`
-    /* border: 1px solid red; */
     color: black;
     width: 100%;
     display: flex;
@@ -90,7 +90,7 @@ const NavDiv = styled.div`
         display: flex;
         flex-direction: row;
     }
-    .lineItem{
+    .lineItem {
         display: flex;
         justify-content: center;
         width: 100%;

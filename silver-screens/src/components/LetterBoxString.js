@@ -19,7 +19,6 @@ class LetterBoxString extends Component {
     }
 
     renderLetters(string){
-        // console.log(string)
         let htmlString = '<span class="word">';
         for (let i = 0; i < string.length; i++){
             let next = `<span class="letter">${string[i]}</span>`
@@ -86,7 +85,6 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps, mapDispatchToProps)(LetterBoxString);
 
 const LetterBoxStringDiv = styled.div`
-    /* border: 1px solid green; */
     background: #FFFFFF;
     a {
         text-decoration: none;
