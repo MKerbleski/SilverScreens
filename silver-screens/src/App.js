@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 import { Route, withRouter } from "react-router-dom";
 
-import { MovieLarge, ListOfMovies, Header,LetterBoxString } from './components/index';
+import { MovieLarge, Nav, ListOfMovies, Header,LetterBoxString } from './components/index';
 import { line } from './style/sharedStyles'
 
 class App extends Component {
@@ -24,6 +24,9 @@ class App extends Component {
                     <Route
                         path={`/search/:params`} 
                         component={ListOfMovies} />
+                </div>
+                <div className="line">
+                    <Nav />
                 </div>
                 <footer> 
                     <div className="left">
@@ -65,12 +68,17 @@ const AppDiv = styled.div`
     min-width: 75vw;
     width: 90vw;
     overflow: auto;
+    .line {
+        ${line()};
+        width: 80%;
+    }
     footer {
         ${line()};
         margin-bottom: 3px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+        width: 80%;
         .left{
             /* border: 1px solid green; */
             display: flex;

@@ -49,9 +49,6 @@ class ListOfMovies extends Component {
                 {this.props.store.movieList && 
                     this.props.store.movieList.length === 0 ? 
                         <h4>No Movies found</h4> : null} 
-                <div className="line">
-                    <Nav />
-                </div>
             </ListOfMoviesDiv>
         )
     }
@@ -91,13 +88,8 @@ const ListOfMoviesDiv = styled.div`
     }
     .line {
         /* REPEAT */
+        ${line()}
         margin-top: 5px;
         width: 80%;
-       ${line()}
     }
 `
-
-
-// production_companies: (2) [{…}, {…}]
-// production_countries: [{…}]
-// spoken_languages: [{…}]

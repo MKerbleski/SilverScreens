@@ -121,8 +121,14 @@ const MoviesLargeDiv = styled.div`
     .title {
         border: 1px solid purple;
         width: 100%;
-        h1{
+        h1 {
+            margin: 0;
+            font-size: 10vw;
             text-align: center;
+            vertical-align: center;
+            i {
+                color: black;
+            }
         }
     }
     .content {
