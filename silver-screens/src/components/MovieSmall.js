@@ -59,6 +59,7 @@ const MovieSmallDiv = styled.div`
     width: 100%;
     color: white;
     margin: 1px;
+    margin-top: 4px;
     /* height: auto; */
     /* max-height: 250px; */
     /* min-height: 200px; */

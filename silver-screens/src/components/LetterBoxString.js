@@ -14,7 +14,6 @@ class LetterBoxString extends Component {
     }
 
     clickHandler(e){
-        // console.log('clickHandler')
         e.preventDefault();
         this.props.requireUpdate();
     }

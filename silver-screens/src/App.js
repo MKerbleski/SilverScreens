@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 import { Route, withRouter } from "react-router-dom";
 
-import { MovieLarge, ListOfMovies, Header } from './components/index';
+import { MovieLarge, ListOfMovies, Header,LetterBoxString } from './components/index';
+import { line } from './style/sharedStyles'
 
 class App extends Component {
     render() {
@@ -22,14 +23,16 @@ class App extends Component {
                 <Route
                     path={`/search/:params`} 
                     component={ListOfMovies} />
-                <footer>
-                    Made by: 
+                <footer> 
                     <a href="http://mikerble.ski">
-                        Mike
+                        <LetterBoxString static word="Made" />
+                        <LetterBoxString static word="by:" />
+                        <LetterBoxString static word="Mike" />
                     </a>
-                    Movies API: 
                     <a href="https://www.themoviedb.org/">
-                        The Movie DB
+                        <LetterBoxString static word="Movies" />
+                        <LetterBoxString static word="API:" />
+                        <LetterBoxString static word="TheMovieDB" />
                     </a>
                 </footer>
             </AppDiv>
@@ -42,15 +45,29 @@ class App extends Component {
 export default withRouter(App)
 
 const AppDiv = styled.div`
-    border: 1px solid red;
-    width: 100%;
+    /* border: 1px solid blue; */
     box-sizing: border-box;
-    background: #711324;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     height: auto;
     padding: 0;
+    margin: 0 50px;
     max-width: 2000px;
+    min-height: 100vh;
+    footer {
+        ${line()};
+        margin-bottom: 3px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        a {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 `

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import { fetchList } from '../actions'
 import { Nav, MovieSmall } from './index';
+import { line } from '../style/sharedStyles'
 
 class ListOfMovies extends Component {
     componentDidMount(){
@@ -75,13 +76,14 @@ const ListOfMoviesDiv = styled.div`
     align-items: center;
     overflow: hidden;
     max-width: 2000px;
+    margin-top: 5px;
     .movies {
         /* border: 1px solid green; */
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         align-content: space-between;
-        justify-content: space-evenly;
+        justify-content: space-between;
         width: 100%;
         @media (max-width: 500px) {
             /* max-width: 49%; */
@@ -89,27 +91,7 @@ const ListOfMoviesDiv = styled.div`
     }
     .line {
         /* REPEAT */
-        /* text-decoration: none; */
-        width: 100%;
-        /* border: 1px solid green; */
-        /* border-bottom: 1px solid black; */
-        border-top: 1px solid black;
-        /* font-family: 'Staatliches'; */
-        /* word-spacing: 10px; */
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        background: white;
-        /* background: green; */
-        h1 {
-            font-size: 5vw;
-            font-family: marqueeregular, Arial, Helvetica, sans-serif;
-            color: black;
-            background: white;
-            width: 100%;
-            margin: 0;
-        }
+        margin-top: 5px;
+       ${line()}
     }
 `
