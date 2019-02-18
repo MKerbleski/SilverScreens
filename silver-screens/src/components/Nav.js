@@ -12,47 +12,56 @@ class Nav extends Component {
     
     render(){
         const { pageNum, catagory, totalPages } = this.props.store
-        return(
-            <NavDiv> 
-                {pageNum === 1 ?
-                    <span className="lineItem"/> :
-                    <span className="lineItem">
+        if(this.props.store.movieList && this.props.store.movieList.length === 0){
+            return null
+        } else {
+            return(
+                <NavDiv className="line"> 
+                    {pageNum === 1 ?
+                        <span className="lineItem"/> :
+                        <span className="lineItem">
+                            <LetterBoxString 
+                                className="lineItem"
+                                word='Prev'
+                                pageNum={pageNum-1}
+                                catagory={catagory}
+                                navigate={this.props.changePage}
+                                />
+                        </span>
+                    }
+                    <span className="lineItem largeNum">
                         <LetterBoxString 
-                            className="lineItem"
-                            word='Previous'
-                            pageNum={pageNum-1}
-                            catagory={catagory}
-                            navigate={this.props.changePage}
-                            />
+                            static
+                            word={`page:`} />
+                        <LetterBoxString 
+                            static
+                            word={`${pageNum}`} />
+                        <LetterBoxString 
+                            static
+                            word={`of`} />
+                        <LetterBoxString 
+                            static
+                            word={`${totalPages}`} />
                     </span>
-                }
-                <span className="lineItem">
-                    <LetterBoxString 
-                        static
-                        word={`page:`} />
-                    <LetterBoxString 
-                        static
-                        word={`${pageNum}`} />
-                    <LetterBoxString 
-                        static
-                        word={`of`} />
-                    <LetterBoxString 
-                        static
-                        word={`${totalPages}`} />
-                </span>
-                {totalPages === pageNum ?
-                    <span  className="lineItem"/> :
-                    <span className="lineItem">
+                    <span className="lineItem smallNum">
                         <LetterBoxString 
-                            className="lineItem"
-                            word='Next'
-                            pageNum={pageNum+1}
-                            catagory={catagory}
-                            navigate={this.props.changePage}
-                            />
-                    </span>}
-            </NavDiv>
-        )
+                            static
+                            word={`${pageNum}`} />
+                    </span>
+                    {totalPages === pageNum ?
+                        <span  className="lineItem"/> :
+                        <span className="lineItem">
+                            <LetterBoxString 
+                                className="lineItem"
+                                word='Next'
+                                pageNum={pageNum+1}
+                                catagory={catagory}
+                                navigate={this.props.changePage}
+                                />
+                        </span>}
+                </NavDiv>
+            )
+        }
     }
 }
 
@@ -80,5 +89,17 @@ const NavDiv = styled.div`
         display: flex;
         justify-content: center;
         width: 100%;
+    }
+    .largeNum {
+        display: flex;
+        @media (max-width: 500px) {
+            display: none;
+        }
+    }
+    .smallNum {
+        display: none;
+        @media (max-width: 500px) {
+            display: flex;
+        }
     }
 `

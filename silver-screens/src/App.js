@@ -27,9 +27,12 @@ class App extends Component {
                         path={`/search/:params`} 
                         component={ListOfMovies} />
                 </div>
-                {this.props.store.movieDetails ? null: <div className="bottomNav">
-                    <Nav />
-                </div>}
+                {this.props.store.movieDetails || this.props.store.movieList &&
+                    this.props.store.movieList.length === 0 
+                    ?   null 
+                    :   <div className="bottomNav">
+                            <Nav />
+                        </div>}
                 <footer> 
                     <div className="left">
                         <a  rel="noopener noreferrer"

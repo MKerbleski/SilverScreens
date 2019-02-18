@@ -46,9 +46,7 @@ class Header extends Component {
                                 <div className="line">
                                     <Search />
                                 </div>
-                                <div className="line">
-                                    <Nav />
-                                </div>
+                                <Nav />
                             </>
                     }
                 </div>

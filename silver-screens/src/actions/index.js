@@ -11,19 +11,11 @@ export const CLEAR_DETAILS = 'CLEAR_DETAILS';
 export const REQUIRE_UPDATE = 'REQUIRE_UPDATE';
 
 export const changePage = (catagory, pageNum=1) => {
-    console.log(catagory, pageNum)
     return function(dispatch){
         dispatch({type: CHANGE_PAGE, pageNum: pageNum});
         dispatch(fetchList(catagory, pageNum))
     }
 }
-
-// export const changeCatagory = (catagory) => {
-//     return function(dispatch){
-//         dispatch({type: CHANGE_CATAGORY, catagory: catagory});
-//         dispatch(fetchList(catagory, 1))
-//     }
-// }
 
 export const fetchList = (catagory, pageNum=1, searchInput=null) => {
     return function(dispatch){
@@ -75,7 +67,6 @@ export const getMovieDetails = (movieId) => {
     return function(dispatch){
         axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_MOVIE_DB_KEY}&language=en-US`).then(res => {
             dispatch({type: MOVIE_DETAILS, payload: res})
-            // console.log(res)
         }).catch(error => {
             dispatch({type: ERROR, payload: error})
             console.log(error)

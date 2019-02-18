@@ -20,6 +20,8 @@ class SearchBar extends Component {
             this.setState({
                 searchInput: '',
             })
+        } else if(e === 'search'){
+            window.location.push(`/search/${this.state.searchInput}`)
         }
         this.props.requireUpdate()
     }
@@ -27,31 +29,33 @@ class SearchBar extends Component {
     render(){
         return(
             <SearchBarDiv>
-                {this.state.active ? 
-                <>
-                    <input 
-                        placeholder="search here"
-                        name="searchInput" 
-                        value={this.state.searchInput}
-                        onChange={(e) =>  
-                            this.setState({
-                                [e.target.name]: e.target.value
-                            })}
-                        >{this.value}</input>
-                    <LetterBoxString 
-                        word='Search'
-                        url={this.state.searchInput.length > 0 ? `/search/${this.state.searchInput}` : '/'} />
-                    <div 
-                        name="clear"
-                        onClick={(e) => this.inputHandler('clear')}>
-                        <LetterBoxString 
-                            word='Clear'
-                            function={this.inputHandler}
-                            url='/' />
-                    </div>
-                </> : null}
-                <div onClick={() => {
-                    this.setState({active: !this.state.active}) }}>
+                {this.state.active 
+                    ?   <>  
+                            <form onSubmit={(e) => this.inputHandler("search")}>
+                                <input 
+                                    placeholder="search here"
+                                    name="searchInput" 
+                                    value={this.state.searchInput}
+                                    onChange={(e) =>  
+                                        this.setState({
+                                            [e.target.name]: e.target.value
+                                        })}
+                                    >{this.value}</input>
+                            </form>
+                            <LetterBoxString 
+                                word='Search'
+                                url={this.state.searchInput.length > 0 ? `/search/${this.state.searchInput}` : '/'} />
+                            <div 
+                                name="clear"
+                                onClick={(e) => this.inputHandler('clear')}>
+                                <LetterBoxString 
+                                    word='Clear'
+                                    function={this.inputHandler}
+                                    url='/' />
+                            </div>
+                        </> 
+                    :   null}
+                <div onClick={() => this.setState({active: !this.state.active})}>
                     <LetterBoxString icon fontA="fas fa-search" />
                 </div>
             </SearchBarDiv>
@@ -89,6 +93,7 @@ const SearchBarDiv = styled.div`
     }
     input {
         margin: 0;
+        font-family: 'Staatliches', Arial, Helvetica, sans-serif;
     }
 
 `

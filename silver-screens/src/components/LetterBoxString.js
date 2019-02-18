@@ -87,7 +87,11 @@ const LetterBoxStringDiv = styled.div`
         /* border-top: 1px solid black; */
         font-family: 'Staatliches', Arial, Helvetica, sans-serif;
         /* margin-left: 10px; */
-        margin-right: 15px;
+        margin-right: 8px;
+        margin-left: 8px;
+        @media (max-width: 500px) {
+            margin-right: 5px;
+        }
         /* display: flex; */
         justify-content: center;
         align-items: center;

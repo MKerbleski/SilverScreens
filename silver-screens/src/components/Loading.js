@@ -3,15 +3,7 @@ import styled from 'styled-components'
 import { Link } from "react-router-dom";
 
 export default class Loading extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-
-        }
-    }
-
     render(){
-        console.log(this.props.error)
         return(
             <LoadingDiv> 
                 {this.props.error 
