@@ -52,7 +52,7 @@ class App extends Component {
 export default withRouter(App)
 
 const AppDiv = styled.div`
-    /* border: 1px solid blue; */
+    border: 1px solid blue;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -60,10 +60,11 @@ const AppDiv = styled.div`
     align-items: center;
     height: auto;
     padding: 0;
-    margin: 0 50px;
+    /* margin: 0 50px; */
     max-width: 2000px;
     min-height: 100vh;
     min-width: 75vw;
+    width: 90vw;
     footer {
         ${line()};
         margin-bottom: 3px;
