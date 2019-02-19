@@ -1,5 +1,6 @@
 # SilverScreens
 To run: 
+    --cd silverScreens
     --yarn
     --yarn start
 

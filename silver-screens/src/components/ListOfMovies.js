@@ -21,7 +21,13 @@ class ListOfMovies extends Component {
             if(catagory === "undefined"){
                 catagory = 'now_playing'
             }
-            this.props.fetchList(catagory, this.props.store.pageNum)
+            let pageNum;
+            if(catagory === this.props.store.catagory){
+                pageNum = this.props.store.pageNum
+            } else {
+                pageNum = 1
+            }
+            this.props.fetchList(catagory, pageNum)
         } else {
             if(this.props.match.url === '/'){
                 let defaultCat = 'now_playing'

@@ -22,7 +22,7 @@ class Nav extends Component {
                         :   <span className="lineItem">
                                 <LetterBoxString 
                                     className="lineItem"
-                                    word='Prev'
+                                    // word='Prev'
                                     icon fontA="fas fa-arrow-left"
                                     pageNum={pageNum-1}
                                     catagory={catagory}
@@ -57,7 +57,7 @@ class Nav extends Component {
                         :   <span className="lineItem">
                                 <LetterBoxString 
                                     className="lineItem"
-                                    word='Next'
+                                    // word='Next'
                                     icon fontA="fas fa-arrow-right"
                                     pageNum={pageNum+1}
                                     catagory={catagory}
